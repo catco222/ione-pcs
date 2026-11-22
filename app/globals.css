@@ -141,7 +141,7 @@
   }
 
   .hero-photo-flash {
-    animation: hero-photo-flash 3s ease-in-out infinite;
+    animation: hero-photo-flash 10s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {

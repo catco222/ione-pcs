@@ -26,7 +26,7 @@ export default function HomePage({ searchParams }: { searchParams: SearchParams 
       <section className="relative isolate overflow-hidden bg-[#111827] text-white">
         <div
           aria-hidden="true"
-          className="hero-photo-flash pointer-events-none absolute inset-0 bg-[url('/hero-corsair-vengeance.webp')] bg-cover bg-center bg-no-repeat sm:bg-[position:right_center]"
+          className="pointer-events-none absolute inset-0 bg-[url('/hero-corsair-vengeance.webp')] bg-cover bg-center bg-no-repeat sm:bg-[position:right_center]"
         />
         <div
           aria-hidden="true"

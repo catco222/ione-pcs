@@ -128,25 +128,4 @@
   html {
     @apply font-sans;
   }
-
-  @keyframes hero-photo-flash {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  .hero-photo-flash {
-    animation: hero-photo-flash 3s ease-in-out both;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-photo-flash {
-      animation: none;
-      opacity: 1;
-    }
-  }
 }

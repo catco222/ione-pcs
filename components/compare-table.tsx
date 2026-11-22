@@ -4,9 +4,10 @@ import Link from "next/link";
 import { CompareSkeleton } from "@/components/skeletons";
 import { useCompare } from "@/components/compare-provider";
 import { useI18n } from "@/components/language-provider";
-import { localizeSpecs } from "@/components/spec-rows";
 import { Button } from "@/components/ui/button";
-import { getProduct } from "@/lib/catalog";
+import { getProduct, specRows } from "@/lib/catalog";
+
+const hiddenRows = new Set(["Additional storage", "Operating system", "Warranty"]);
 
 export function CompareTable() {
   const { slugs, ready, remove, clear } = useCompare();
@@ -32,7 +33,7 @@ export function CompareTable() {
     );
   }
 
-  const rows = localizeSpecs(products[0], phrase).map((row) => row.label);
+  const rows = specRows(products[0]).filter((row) => !hiddenRows.has(row.label));
 
   return (
     <div>
@@ -79,21 +80,21 @@ export function CompareTable() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((label) => (
-              <tr key={label} className="border-b border-[#e1e8ed] last:border-0">
+            {rows.map((row) => (
+              <tr key={row.label} className="border-b border-[#e1e8ed] last:border-0">
                 <th
                   scope="row"
                   className="sticky left-0 z-10 bg-white p-3 text-left font-medium text-[#3A4F66]"
                 >
-                  {label}
+                  {phrase(row.label)}
                 </th>
                 {products.map((product) => {
                   const value =
-                    localizeSpecs(product, phrase).find((row) => row.label === label)?.value ??
-                    phrase("Not stated");
+                    specRows(product).find((item) => item.label === row.label)?.value ??
+                    "Not stated";
                   return (
                     <td key={product.slug} className="p-3 align-top whitespace-pre-line text-[#192a3d]">
-                      {value}
+                      {phrase(value)}
                     </td>
                   );
                 })}

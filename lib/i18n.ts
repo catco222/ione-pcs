@@ -109,7 +109,7 @@ const en = {
   "product.companyTail": "The address is {line1}, {line2}.",
   "compare.title": "Compare",
   "compare.lede":
-    "Choose up to three systems. The rows are the ones a buyer scans: availability, processor, graphics, memory, storage, warranty, the US street price, and the tugrik estimate.",
+    "Choose up to three systems. The rows are the ones a buyer scans: availability, processor, graphics, memory, storage, the US street price, and the tugrik estimate.",
   "compare.emptyTitle": "Nothing to compare yet",
   "compare.emptyBody":
     "Pick up to three systems from the catalog. The same rows stay in place: price, GPU, memory, storage, and the tugrik estimate.",
@@ -306,7 +306,7 @@ const mn: Record<MessageKey, string> = {
   "product.companyTail": "Хаяг: {line1}, {line2}.",
   "compare.title": "Харьцуулах",
   "compare.lede":
-    "Гурван хүртэлх систем сонгоно. Мөрүүд нь худалдан авагчийн хардаг зүйлс: бэлэн байдал, процессор, график, санах ой, хадгалалт, баталгаа, АНУ-ын зах зээлийн үнэ, төгрөгийн тооцоолол.",
+    "Гурван хүртэлх систем сонгоно. Мөрүүд нь худалдан авагчийн хардаг зүйлс: бэлэн байдал, процессор, график, санах ой, хадгалалт, АНУ-ын зах зээлийн үнэ, төгрөгийн тооцоолол.",
   "compare.emptyTitle": "Харьцуулах зүйл алга",
   "compare.emptyBody":
     "Каталогоос гурван хүртэлх систем сонгоно. Үнэ, GPU, санах ой, хадгалалт, төгрөгийн тооцоолол нэг мөрөнд үлдэнэ.",
@@ -426,8 +426,8 @@ const phrases: Record<string, string> = {
   Contact: "Холбоо барих",
   "Prebuilt towers from public listings. Filter by GPU, processor, memory, storage, a resolution band, a tugrik budget, or brand. Prices are estimates, and several sources disagreed or were out of stock on the day they were read.":
     "Нийтийн заруудаас авсан бэлэн угсралттай компьютер. GPU, процессор, санах ой, хадгалалт, нягтралын бүс, төгрөгийн төсөв, брэндээр шүүнэ. Үнэ нь тооцоолол бөгөөд эх сурвалжууд уншсан өдрөө зөрүүтэй буюу дууссан байсан.",
-  "Choose up to three systems. The rows are the ones a buyer scans: availability, processor, graphics, memory, storage, warranty, the US street price, and the tugrik estimate.":
-    "Гурван хүртэлх систем сонгоно. Мөрүүд нь худалдан авагчийн хардаг зүйлс: бэлэн байдал, процессор, график, санах ой, хадгалалт, баталгаа, АНУ-ын зах зээлийн үнэ, төгрөгийн тооцоолол.",
+  "Choose up to three systems. The rows are the ones a buyer scans: availability, processor, graphics, memory, storage, the US street price, and the tugrik estimate.":
+    "Гурван хүртэлх систем сонгоно. Мөрүүд нь худалдан авагчийн хардаг зүйлс: бэлэн байдал, процессор, график, санах ой, хадгалалт, АНУ-ын зах зээлийн үнэ, төгрөгийн тооцоолол.",
   "Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order.":
     "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү. Маягт мессежийг энэ хөтөч дээр бэлтгэнэ. Захиалга хийхгүй.",
   "These are the IT services published on ione.mn.":

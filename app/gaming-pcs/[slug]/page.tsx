@@ -11,6 +11,8 @@ import {
 } from "@/lib/catalog";
 import { formatMnt } from "@/lib/format";
 
+export const instant = false;
+
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }

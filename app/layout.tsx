@@ -8,6 +8,8 @@ import { company } from "@/lib/company";
 import { isLang } from "@/lib/i18n";
 import "./globals.css";
 
+export const instant = false;
+
 export const metadata: Metadata = {
   metadataBase: new URL(company.site),
   title: {

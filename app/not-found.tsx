@@ -4,6 +4,8 @@ import { Tx } from "@/components/i18n-text";
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/catalog";
 
+export const instant = false;
+
 export default function NotFound() {
   return (
     <Container className="py-16 sm:py-24">

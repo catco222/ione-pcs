@@ -34,7 +34,7 @@ export default function HomePage() {
             <Tx k="hero.lede" />
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button className="h-11 px-4" nativeButton={false} render={<Link href="/gaming-pcs" />}>
+            <Button className="h-11 px-4" nativeButton={false} render={<Link href="/" />}>
               <Tx k="hero.browse" />
             </Button>
             <Button

@@ -32,7 +32,7 @@ export function ProductView({
   return (
     <Container className="py-6 sm:py-10">
       <p className="text-sm text-[#3A4F66]">
-        <Link href="/gaming-pcs" className="hover:text-[#2872fa]">
+        <Link href="/" className="hover:text-[#2872fa]">
           {t("nav.gaming")}
         </Link>
         <span aria-hidden="true"> / </span>

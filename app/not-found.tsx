@@ -13,7 +13,7 @@ export default function NotFound() {
       <p className="mt-3 max-w-xl text-base leading-relaxed text-[#3A4F66]">
         <Tx k="notFound.body" vars={{ count: PRODUCTS.length }} />
       </p>
-      <Button className="mt-6 h-10 px-4" nativeButton={false} render={<Link href="/gaming-pcs" />}>
+      <Button className="mt-6 h-10 px-4" nativeButton={false} render={<Link href="/" />}>
         <Tx k="hero.browse" />
       </Button>
     </Container>

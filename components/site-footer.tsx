@@ -6,7 +6,7 @@ import { useI18n } from "@/components/language-provider";
 import { company } from "@/lib/company";
 
 const LINKS = [
-  { href: "/gaming-pcs", key: "nav.gaming" },
+  { href: "/", key: "nav.gaming" },
   { href: "/compare", key: "nav.compare" },
   { href: "/services", key: "nav.services" },
   { href: "/about", key: "nav.about" },

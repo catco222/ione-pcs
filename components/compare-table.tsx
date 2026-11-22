@@ -26,7 +26,7 @@ export function CompareTable() {
         <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#3A4F66]">
           {t("compare.emptyBody")}
         </p>
-        <Button className="mt-5 h-10 px-4" nativeButton={false} render={<Link href="/gaming-pcs" />}>
+        <Button className="mt-5 h-10 px-4" nativeButton={false} render={<Link href="/" />}>
           {t("hero.browse")}
         </Button>
       </div>
@@ -40,7 +40,7 @@ export function CompareTable() {
       {products.length < 3 ? (
         <p className="mb-4 text-sm text-[#3A4F66]">
           {products.length === 1 ? t("compare.one") : t("compare.two")}{" "}
-          <Link href="/gaming-pcs" className="text-[#2872fa] hover:underline">
+          <Link href="/" className="text-[#2872fa] hover:underline">
             {t("compare.back")}
           </Link>
         </p>

@@ -156,7 +156,7 @@ export function catalogHref(query: CatalogQuery): string {
   if (query.available) params.set("available", "1");
   if (query.sort !== "recommended") params.set("sort", query.sort);
   const search = params.toString();
-  return search ? `/gaming-pcs?${search}` : "/gaming-pcs";
+  return search ? `/?${search}` : "/";
 }
 
 export function emptyQuery(): CatalogQuery {

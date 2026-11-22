@@ -53,7 +53,7 @@ export default function AboutPage() {
             <RateNote />
           </div>
           <p className="mt-4 text-sm">
-            <Link href="/gaming-pcs" className="text-[#2872fa] hover:underline">
+            <Link href="/" className="text-[#2872fa] hover:underline">
               <Tx k="about.browse" />
             </Link>
           </p>

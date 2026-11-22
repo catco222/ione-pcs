@@ -15,12 +15,13 @@ import {
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/gaming-pcs", key: "nav.gaming" },
+  { href: "/", key: "nav.gaming" },
   { href: "/services", key: "nav.services" },
   { href: "/about", key: "nav.about" },
 ] as const;
 
 function isActive(pathname: string, href: string): boolean {
+  if (href === "/") return pathname === "/" || pathname.startsWith("/gaming-pcs/");
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

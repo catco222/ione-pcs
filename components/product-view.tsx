@@ -66,13 +66,6 @@ export function ProductView({
         </div>
       </div>
 
-      <section className="mt-10 max-w-xl">
-        <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.ask")}</h2>
-        <div className="mt-4">
-          <InquiryForm defaultSlug={product.slug} order />
-        </div>
-      </section>
-
       <section className="mt-12">
         <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.specs")}</h2>
         <div className="mt-4 overflow-x-auto rounded-lg border border-[#d5dee6] bg-white">
@@ -91,6 +84,13 @@ export function ProductView({
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section className="mt-12 max-w-xl">
+        <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.ask")}</h2>
+        <div className="mt-4">
+          <InquiryForm defaultSlug={product.slug} order />
         </div>
       </section>
 

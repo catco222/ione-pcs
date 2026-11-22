@@ -29,8 +29,16 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="bg-[#111827] text-white">
-        <Container className="py-16 sm:py-24">
+      <section className="relative isolate overflow-hidden bg-[#111827] text-white">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[url('/hero-corsair-vengeance.webp')] bg-cover bg-center bg-no-repeat sm:bg-[position:right_center]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#111827] from-20% via-[#111827]/88 to-[#111827]/72"
+        />
+        <Container className="relative py-16 sm:py-24">
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
             Gaming desktops
           </h1>

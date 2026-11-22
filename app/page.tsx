@@ -31,14 +31,12 @@ export default function HomePage() {
     <>
       <section className="bg-[#111827] text-white">
         <Container className="py-16 sm:py-24">
-          <p className="text-sm text-[#9fb0c3]">iOne · Khan-Uul, Ulaanbaatar</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
             Gaming desktops
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#d5dee6]">
-            {PRODUCTS.length} current prebuilt towers. Each one shows a US street price and an
-            estimated tugrik figure from public listings on 22 November 2026. The figures are
-            estimates, not quotes from iOne. This site does not take payment.
+            iOne offers the widest range for gamers, from the most powerful gaming PCs to
+            budget-friendly ones.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button className="h-11 px-4" nativeButton={false} render={<Link href="/gaming-pcs" />}>

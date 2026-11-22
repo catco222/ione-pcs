@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
-import { useCompare } from "@/components/compare-provider";
 import { MongoliaFlag, UsFlag } from "@/components/flags";
 import { useI18n } from "@/components/language-provider";
 import { Wordmark } from "@/components/wordmark";
@@ -21,7 +20,6 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/gaming-pcs", key: "nav.gaming" },
-  { href: "/compare", key: "nav.compare" },
   { href: "/services", key: "nav.services" },
   { href: "/about", key: "nav.about" },
 ] as const;
@@ -64,9 +62,6 @@ function LanguageSwitch() {
 export function SiteHeader() {
   const pathname = usePathname();
   const { t } = useI18n();
-  const { slugs, ready } = useCompare();
-  const compareLabel =
-    ready && slugs.length > 0 ? t("nav.compareCount", { count: slugs.length }) : t("nav.compare");
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#111827] text-white">
@@ -91,7 +86,7 @@ export function SiteHeader() {
               )}
               aria-current={isActive(pathname, item.href) ? "page" : undefined}
             >
-              {item.href === "/compare" ? compareLabel : t(item.key)}
+              {t(item.key)}
             </Link>
           ))}
         </nav>
@@ -132,7 +127,7 @@ export function SiteHeader() {
                     )}
                     aria-current={isActive(pathname, item.href) ? "page" : undefined}
                   >
-                    {item.href === "/compare" ? compareLabel : t(item.key)}
+                    {t(item.key)}
                   </Link>
                 ))}
                 <Link href="/contact" className="py-3 text-base font-medium text-[#2872fa]">

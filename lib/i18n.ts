@@ -420,7 +420,7 @@ const phrases: Record<string, string> = {
   "Card personalization integration": "Картын хувийн тохиргооны интеграц",
   Consulting: "Зөвлөх үйлчилгээ",
   "IT security consulting": "Мэдээллийн технологийн аюулгүй байдлын зөвлөгөө",
-  "System design & architecture": "Системийн загвар ба архитектур",
+  "System design & architecture": "Системийн архитектур",
   "API integration guidance": "API интеграцын зөвлөгөө",
   "Project planning & support": "Төслийн төлөвлөлт ба дэмжлэг",
   "Under ₮8 million": "₮8 саяас доош",

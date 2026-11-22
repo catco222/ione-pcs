@@ -134,10 +134,10 @@ const en = {
   "about.title": "About",
   "contact.title": "Contact",
   "contact.lede":
-    "Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order.",
+    "Write to iOne about IT services, smart cards, consulting, or a system in the catalog.",
   "form.name": "Name",
   "form.email": "Email",
-  "form.phone": "Phone, if you want a call",
+  "form.phone": "Phone number",
   "form.phoneNumber": "Phone number",
   "form.system": "System",
   "form.systemNone": "Not a specific system",
@@ -181,7 +181,7 @@ const en = {
 export type MessageKey = keyof typeof en;
 
 const mn: Record<MessageKey, string> = {
-  "nav.gaming": "Тоглоомын компьютер",
+  "nav.gaming": "Gamer PC",
   "nav.compare": "Харьцуулах",
   "nav.services": "Үйлчилгээ",
   "nav.about": "Бидний тухай",
@@ -199,20 +199,20 @@ const mn: Record<MessageKey, string> = {
   "lang.mn": "Монгол",
   "hero.title": "Тоглоомын ширээний компьютер",
   "hero.lede":
-    "iOne тоглоомчдод хамгийн өргөн сонголтыг санал болгодог. Хамгийн хүчирхэг тоглоомын компьютерээс төсөвт ээлтэй хүртэл.",
-  "hero.browse": "Тоглоомын компьютер үзэх",
+    "iOne тоглоомчдод хамгийн өргөн сонголтыг санал болгодог. Хамгийн хүчирхэг компьютерийг манайхаас аваарай.",
+  "hero.browse": "Gamer PC үзэх",
   "hero.compare": "Харьцуулах",
   "home.gpu": "GPU",
-  "home.budget": "Төсөв, төгрөгөөр",
+  "home.budget": "Дүн",
   "home.brand": "Брэнд",
-  "home.across": "Каталогийн дагуу",
+  "home.across": "Бүгд",
   "home.all": "Бүгд {count}",
   "home.shopNote":
     "Карт дээрх дэлгүүрийн зөвлөмж ({bands} болон бусад ангилал) нь GPU-ийн ангиллаас бүлэглэсэн. Үйлдвэрлэгчийн үнэлгээ биш.",
   "home.services": "Үйлчилгээ",
   "home.smartCards": "Ухаалаг картын шийдэл",
   "catalog.eyebrow": "Каталог",
-  "catalog.title": "Тоглоомын компьютер",
+  "catalog.title": "Gamer PC",
   "catalog.lede":
     "Нийтийн заруудаас авсан бэлэн угсралттай компьютер. GPU, процессор, санах ой, хадгалалт, нягтралын бүс, төгрөгийн төсөв, брэндээр шүүнэ. Үнэ нь тооцоолол бөгөөд эх сурвалжууд уншсан өдрөө зөрүүтэй буюу дууссан байсан.",
   "catalog.resolution": "Нягтралын бүс",
@@ -311,10 +311,10 @@ const mn: Record<MessageKey, string> = {
   "about.title": "Бидний тухай",
   "contact.title": "Холбоо барих",
   "contact.lede":
-    "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү. Маягт мессежийг энэ хөтөч дээр бэлтгэнэ. Захиалга хийхгүй.",
+    "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү.",
   "form.name": "Нэр",
   "form.email": "Имэйл",
-  "form.phone": "Утас, залгахыг хүсвэл",
+  "form.phone": "Утасны дугаар",
   "form.phoneNumber": "Утасны дугаар",
   "form.system": "Систем",
   "form.systemNone": "Тодорхой систем биш",
@@ -344,7 +344,7 @@ const mn: Record<MessageKey, string> = {
   "loading.catalog": "Каталогийг ачаалж байна…",
   "loading.product": "Энэ системийг ачаалж байна…",
   "meta.home": "iOne",
-  "meta.gaming": "Тоглоомын компьютер · iOne",
+  "meta.gaming": "Gamer PC · iOne",
   "meta.compare": "Компьютер харьцуулах · iOne",
   "meta.services": "Үйлчилгээ · iOne",
   "meta.it": "Мэдээллийн технологийн үйлчилгээ · iOne",
@@ -379,7 +379,7 @@ export function translate(
 /** Exact English sentences from the company profile, services, and catalog notes. Specs are not listed, so they stay unchanged. */
 const phrases: Record<string, string> = {
   Catalog: "Каталог",
-  "Gaming PCs": "Тоглоомын компьютер",
+  "Gaming PCs": "Gamer PC",
   Compare: "Харьцуулах",
   "Compare PCs": "Компьютер харьцуулах",
   Services: "Үйлчилгээ",
@@ -388,8 +388,8 @@ const phrases: Record<string, string> = {
   "Prebuilt towers from public listings. Filter by GPU, processor, memory, storage, a resolution band, a tugrik budget, or brand. Prices are estimates, and several sources disagreed or were out of stock on the day they were read.":
     "Нийтийн заруудаас авсан бэлэн угсралттай компьютер. GPU, процессор, санах ой, хадгалалт, нягтралын бүс, төгрөгийн төсөв, брэндээр шүүнэ. Үнэ нь тооцоолол бөгөөд эх сурвалжууд уншсан өдрөө зөрүүтэй буюу дууссан байсан.",
   "Choose up to three systems.": "Гурван хүртэлх систем сонгоно.",
-  "Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order.":
-    "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү. Маягт мессежийг энэ хөтөч дээр бэлтгэнэ. Захиалга хийхгүй.",
+  "Write to iOne about IT services, smart cards, consulting, or a system in the catalog.":
+    "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү.",
   "These are the IT services published on ione.mn.":
     "Эдгээр нь ione.mn дээр нийтэлсэн мэдээллийн технологийн үйлчилгээ.",
   "These are the smart-card lines published on ione.mn.":

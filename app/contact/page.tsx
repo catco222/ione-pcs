@@ -15,7 +15,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="iOne"
         title="Contact"
-        lede="Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order."
+        lede="Write to iOne about IT services, smart cards, consulting, or a system in the catalog."
       />
       <Container className="grid gap-10 py-8 sm:py-10 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)]">
         <address className="text-sm leading-relaxed text-[#3A4F66] not-italic">

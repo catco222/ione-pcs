@@ -130,18 +130,17 @@
   }
 
   @keyframes hero-photo-flash {
-    0%,
-    100% {
+    from {
       opacity: 0;
     }
 
-    50% {
+    to {
       opacity: 1;
     }
   }
 
   .hero-photo-flash {
-    animation: hero-photo-flash 10s ease-in-out infinite;
+    animation: hero-photo-flash 3s ease-in-out both;
   }
 
   @media (prefers-reduced-motion: reduce) {

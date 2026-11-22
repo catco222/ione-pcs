@@ -62,23 +62,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-b border-[#d5dee6] bg-white">
-        <Container className="grid gap-6 py-6 sm:grid-cols-3">
-          <p className="text-sm leading-relaxed text-[#3A4F66]">
-            Technology company. IT services, smart cards, and consulting stay on this site.
-          </p>
-          <p className="text-sm leading-relaxed text-[#3A4F66]">
-            Official distributor of Kona-M, Korea’s leading card manufacturer.
-          </p>
-          <p className="text-sm leading-relaxed text-[#3A4F66]">
-            {company.addressLines[0]}, {company.addressLines[1]}.{" "}
-            <a className="text-[#2872fa] hover:underline" href={`mailto:${company.email}`}>
-              {company.email}
-            </a>
-          </p>
-        </Container>
-      </section>
-
       <Container className="py-12 sm:py-16">
         <h2 className="text-2xl font-semibold text-[#192a3d]">Start with a tier, a budget, or a brand</h2>
         <div className="mt-6 grid gap-4 lg:grid-cols-3">

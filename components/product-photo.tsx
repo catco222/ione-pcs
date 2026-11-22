@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ImageIcon } from "lucide-react";
 import { useI18n } from "@/components/language-provider";
 import type { Product } from "@/lib/catalog";
 
@@ -22,7 +21,15 @@ export function ProductPhoto({
     <div>
       <div className="flex aspect-[4/3] items-center justify-center bg-[#e7edf1]">
         {missing ? (
-          <ImageIcon className="size-8 text-[#8aa0b3]" strokeWidth={1.5} aria-hidden="true" />
+          <div className="flex flex-col items-center gap-3 text-[#5c7388]">
+            <svg viewBox="0 0 64 72" className="h-16 w-14" aria-hidden="true">
+              <rect x="14" y="4" width="36" height="56" rx="3" fill="none" stroke="currentColor" strokeWidth="2.5" />
+              <circle cx="32" cy="16" r="2.5" fill="currentColor" />
+              <path d="M24 48h16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M22 64h20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+            <p className="text-sm font-medium tracking-wide">No photo</p>
+          </div>
         ) : (
           // Manufacturer CDNs are loaded by the browser. Next's optimizer would have to fetch them server-side.
           // eslint-disable-next-line @next/next/no-img-element

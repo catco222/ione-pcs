@@ -3,15 +3,6 @@
 import Link from "next/link";
 import { useI18n } from "@/components/language-provider";
 
-export function OpenService({ href, title }: { href: string; title: string }) {
-  const { t, phrase } = useI18n();
-  return (
-    <Link href={href} className="mt-4 inline-block text-sm text-[#2872fa] hover:underline">
-      {t("services.open", { title: phrase(title) })}
-    </Link>
-  );
-}
-
 export function ServiceCloser({ cards = false }: { cards?: boolean }) {
   const { t } = useI18n();
 

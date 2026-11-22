@@ -9,7 +9,6 @@ import { ProductCard } from "@/components/product-card";
 import { ProductPhoto } from "@/components/product-photo";
 import { useLocalizedSpecs } from "@/components/spec-rows";
 import { gpuLine, type Product } from "@/lib/catalog";
-import { company } from "@/lib/company";
 
 export function ProductView({
   product,
@@ -18,7 +17,7 @@ export function ProductView({
   product: Product;
   related: Product[];
 }) {
-  const { t, phrase } = useI18n();
+  const { t } = useI18n();
   const rows = useLocalizedSpecs(product);
   const highlights: [string, string][] = [
     [t("card.cpu"), product.cpu],
@@ -103,14 +102,6 @@ export function ProductView({
           ))}
         </div>
       </section>
-
-      <p className="mt-12 max-w-3xl text-sm leading-relaxed text-[#3A4F66]">
-        {phrase(company.about)}{" "}
-        {t("product.companyTail", {
-          line1: phrase(company.addressLines[0]),
-          line2: phrase(company.addressLines[1]),
-        })}
-      </p>
     </Container>
   );
 }

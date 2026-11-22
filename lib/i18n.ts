@@ -133,8 +133,6 @@ const en = {
     "Street prices on the gaming desktop pages are estimates from public listings on 22 November 2026. They are not quotes from iOne. This site does not take payment.",
   "footer.copy": "© 2026 iOne",
   "about.title": "About",
-  "about.history":
-    "iOne has a 10 year history providing IT service to the Mongolian market.",
   "contact.title": "Contact",
   "contact.lede":
     "Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order.",
@@ -145,9 +143,8 @@ const en = {
   "form.system": "System",
   "form.systemNone": "Not a specific system",
   "form.message": "Message",
-  "form.submit": "Prepare inquiry",
+  "form.submit": "Contact us",
   "form.order": "Order",
-  "form.note": "Stays in this browser. iOne is not charged and no order is placed.",
   "form.errName": "Enter your name.",
   "form.errEmail": "Enter an email address.",
   "form.errMessage": "Add a short note about what you want.",
@@ -327,8 +324,6 @@ const mn: Record<MessageKey, string> = {
     "Тоглоомын ширээний компьютерын хуудсан дээрх зах зээлийн үнэ нь 2026 оны 11-р сарын 22-ны нийтийн заруудаас авсан тооцоолол. iOne-ийн үнийн санал биш. Энэ сайт төлбөр хүлээж авдаггүй.",
   "footer.copy": "© 2026 iOne",
   "about.title": "Бидний тухай",
-  "about.history":
-    "iOne нь Монголын зах зээлд мэдээллийн технологийн үйлчилгээ үзүүлсэн 10 жилийн түүхтэй.",
   "contact.title": "Холбоо барих",
   "contact.lede":
     "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү. Маягт мессежийг энэ хөтөч дээр бэлтгэнэ. Захиалга хийхгүй.",
@@ -339,9 +334,8 @@ const mn: Record<MessageKey, string> = {
   "form.system": "Систем",
   "form.systemNone": "Тодорхой систем биш",
   "form.message": "Зурвас",
-  "form.submit": "Лавлагаа бэлтгэх",
+  "form.submit": "Бидэнтэй холбогдох",
   "form.order": "Захиалах",
-  "form.note": "Энэ хөтөч дээр үлдэнэ. iOne-д төлбөр тооцогдохгүй, захиалга хийгдэхгүй.",
   "form.errName": "Нэрээ оруулна уу.",
   "form.errEmail": "Имэйл хаяг оруулна уу.",
   "form.errMessage": "Юу хүсэж байгаагаа товч бичнэ үү.",
@@ -435,6 +429,8 @@ const phrases: Record<string, string> = {
   "IT Services / Smart Card Solutions": "Мэдээллийн технологийн үйлчилгээ / Ухаалаг картын шийдэл",
   "Innovative IT services, card technologies, and secure digital solutions":
     "Шинэлэг мэдээллийн технологийн үйлчилгээ, картын технологи, найдвартай дижитал шийдэл",
+  "iOne is a technology company with a 10+ year history serving the Mongolian market. We specialize in cloud services, AI integration, blockchain consulting, and professional EMV smart card supply as the official distributor of Kona-M, Korea's leading card manufacturer.":
+    "iOne нь Монголын зах зээлд 10-аас дээш жил үйлчилсэн түүхтэй технологийн компани. Бид үүлэн үйлчилгээ, хиймэл оюуны интеграц, блокчейний зөвлөх үйлчилгээ, мөн Солонгосын тэргүүлэгч карт үйлдвэрлэгч Kona-M-ийн албан ёсны дистрибьютерээр мэргэжлийн EMV ухаалаг карт нийлүүлэх чиглэлээр мэргэшдэг.",
   "iOne is a technology company providing IT solutions, cloud services, AI integration, blockchain consulting, and professional EMV smart card supply as the official distributor of Kona-M, Korea’s leading card manufacturer.":
     "iOne нь мэдээллийн технологийн шийдэл, үүлэн үйлчилгээ, хиймэл оюуны интеграц, блокчейний зөвлөх үйлчилгээ үзүүлдэг технологийн компани бөгөөд Солонгосын тэргүүлэгч карт үйлдвэрлэгч Kona-M-ийн албан ёсны дистрибьютерээр мэргэжлийн EMV ухаалаг карт нийлүүлдэг.",
   "Official Distributor of Kona-M Smart Cards": "Kona-M ухаалаг картын албан ёсны дистрибьютер",

@@ -245,7 +245,6 @@ export function InquiryForm({
       >
         {order ? t("form.order") : t("form.submit")}
       </Button>
-      {order ? null : <p className="text-xs leading-relaxed text-[#3A4F66]">{t("form.note")}</p>}
     </form>
   );
 }

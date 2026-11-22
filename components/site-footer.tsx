@@ -19,7 +19,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto bg-[#111827] text-[#d5dee6]">
-      <Container className="grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-3">
+      <Container className="grid gap-8 py-10 sm:grid-cols-2">
         <div>
           <Wordmark />
           <p className="mt-3 text-sm leading-relaxed">
@@ -38,7 +38,6 @@ export function SiteFooter() {
             </Link>
           ))}
         </nav>
-        <p className="text-sm leading-relaxed">{t("footer.note")}</p>
       </Container>
       <div className="border-t border-white/10">
         <Container className="py-4 text-xs">{t("footer.copy")}</Container>

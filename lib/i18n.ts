@@ -4,7 +4,6 @@ export const LANG_KEY = "ione-lang";
 
 const en = {
   "nav.gaming": "Gaming PCs",
-  "nav.gamingHeader": "Gaming PCs",
   "nav.compare": "Compare",
   "nav.services": "Services",
   "nav.about": "About",
@@ -183,7 +182,6 @@ export type MessageKey = keyof typeof en;
 
 const mn: Record<MessageKey, string> = {
   "nav.gaming": "Gamer PC",
-  "nav.gamingHeader": "Gamer PCs",
   "nav.compare": "Харьцуулах",
   "nav.services": "Үйлчилгээ",
   "nav.about": "Бидний тухай",

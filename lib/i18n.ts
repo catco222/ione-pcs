@@ -133,13 +133,8 @@ const en = {
     "Street prices on the gaming desktop pages are estimates from public listings on 22 November 2026. They are not quotes from iOne. This site does not take payment.",
   "footer.copy": "© 2026 iOne",
   "about.title": "About",
-  "about.where": "Where to find iOne",
-  "about.how": "How a PC inquiry works",
-  "about.howBody":
-    "The catalog lists {count} prebuilt gaming desktops. The US amounts are street prices read from public pages. The tugrik amounts are estimates at the rate below. iOne has not published stock, freight, or a selling price for these systems, and this site does not take payment or reserve a machine.",
-  "about.howBody2":
-    "To ask, open a system and prepare an inquiry, then email it to {email}. The form does not leave this browser.",
-  "about.browse": "Browse the catalog",
+  "about.history":
+    "iOne has a 10 year history providing IT service to the Mongolian market.",
   "contact.title": "Contact",
   "contact.lede":
     "Write to iOne about IT services, smart cards, consulting, or a system in the catalog. The form prepares a message in this browser. It does not place an order.",
@@ -332,13 +327,8 @@ const mn: Record<MessageKey, string> = {
     "Тоглоомын ширээний компьютерын хуудсан дээрх зах зээлийн үнэ нь 2026 оны 11-р сарын 22-ны нийтийн заруудаас авсан тооцоолол. iOne-ийн үнийн санал биш. Энэ сайт төлбөр хүлээж авдаггүй.",
   "footer.copy": "© 2026 iOne",
   "about.title": "Бидний тухай",
-  "about.where": "iOne хаана байдаг вэ",
-  "about.how": "Компьютерын лавлагаа хэрхэн ажилладаг вэ",
-  "about.howBody":
-    "Каталогт {count} бэлэн угсралттай тоглоомын ширээний компьютер бий. АНУ-ын дүн нь нийтийн хуудаснаас уншсан зах зээлийн үнэ. Төгрөгийн дүн нь доорх ханшаар тооцсон тооцоолол. iOne эдгээр системийн нөөц, тээвэр, борлуулалтын үнийг нийтлээгүй бөгөөд энэ сайт төлбөр авдаггүй, машин захиалдаггүй.",
-  "about.howBody2":
-    "Асуухын тулд системээ нээгээд лавлагаа бэлтгэж, {email} руу илгээнэ үү. Маягт энэ хөтчөөс гардаггүй.",
-  "about.browse": "Каталог үзэх",
+  "about.history":
+    "iOne нь Монголын зах зээлд мэдээллийн технологийн үйлчилгээ үзүүлсэн 10 жилийн түүхтэй.",
   "contact.title": "Холбоо барих",
   "contact.lede":
     "Мэдээллийн технологийн үйлчилгээ, ухаалаг карт, зөвлөх үйлчилгээ, эсвэл каталогийн системийн талаар iOne-д бичнэ үү. Маягт мессежийг энэ хөтөч дээр бэлтгэнэ. Захиалга хийхгүй.",

@@ -137,7 +137,11 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "The Costco page showed the system as unavailable and did not print a live price. $1,099.99 is a warehouse price snapshot dated 20 November 2026.",
-    image: null,
+    image: {
+      url: "/photos/cyberpowerpc-gamer-xtreme.webp",
+      credit:
+        "Public product image from CyberPowerPC’s Costco Gamer Xtreme post (Core Ultra 5, GeForce RTX 5060). The file is not labeled with part GXi2000CSTV3.",
+    },
     availability: {
       label: "Unavailable",
       detail: "The Costco page showed this system as unavailable.",
@@ -146,7 +150,6 @@ const CATALOG: Product[] = [
     included: ["Windows 11 Home, as named in the Costco title"],
     notes: [
       "The warehouse snapshot and a Tom’s Hardware test of a Gamer Xtreme at this price name an MSI RTX 5060 Shadow 2X OC.",
-      "No product photo was retrieved. Costco returned HTTP 429 to a direct fetch.",
     ],
     sources: [
       {
@@ -183,16 +186,17 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "This URL is a configurator. Other Dell presets are separate configurations and are not this price.",
-    image: null,
+    image: {
+      url: "/photos/alienware-aurora-act1250.webp",
+      credit: "Product image from the Dell Alienware Aurora ACT1250 gallery.",
+    },
     availability: {
       label: "Sold out",
       detail: "Dell listed this configuration as sold out.",
       bucket: "unavailable",
     },
     included: [],
-    notes: [
-      "No chassis photo was retrieved. The page metadata image was the Dell logo.",
-    ],
+    notes: [],
     sources: [
       {
         label: "Dell, Alienware Aurora ACT1250",
@@ -423,7 +427,10 @@ const CATALOG: Product[] = [
       label: "Shown as a limited-time cut from this price",
     },
     priceCaution: null,
-    image: null,
+    image: {
+      url: "/photos/msi-aegis-rs2.webp",
+      credit: "Product image from the MSI Aegis RS2 AI gallery.",
+    },
     availability: {
       label: "In stock",
       detail: "Shown in stock on the MSI US store.",
@@ -433,7 +440,6 @@ const CATALOG: Product[] = [
     notes: [
       "Manufacturer number AeRS2A2NVV72208.",
       "RAM speed was not stated.",
-      "No chassis photo was retrieved. The page metadata image was a store promotion banner.",
     ],
     sources: [
       {
@@ -469,14 +475,18 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "A dedicated product URL was not retrieved. These are search-result prices, not a cart price.",
-    image: null,
+    image: {
+      url: "/photos/ibuypower-y40.webp",
+      credit:
+        "Public product image of an iBUYPOWER Y40 gaming desktop (Best Buy model Y40BI7N4703). Not a photo of part Y40BA9N5801.",
+    },
     availability: {
       label: "Not stated",
       detail: "The Newegg search results did not state stock.",
       bucket: "unknown",
     },
     included: [],
-    notes: ["RAM speed was not stated on the Newegg titles used. No product photo was retrieved."],
+    notes: ["RAM speed was not stated on the Newegg titles used."],
     sources: [
       {
         label: "Newegg, iBUYPOWER and RTX 5080",
@@ -512,7 +522,11 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "This is a category tile, not a product-detail page. A model number was not on the listing. The finish on the tile is white.",
-    image: null,
+    image: {
+      url: "/photos/cyberpowerpc-gamer-supreme.webp",
+      credit:
+        "Public photo of a white CyberPowerPC Gamer Supreme liquid-cooled desktop. Not the B&H category tile.",
+    },
     availability: {
       label: "Not stated",
       detail:
@@ -520,7 +534,7 @@ const CATALOG: Product[] = [
       bucket: "unknown",
     },
     included: [],
-    notes: ["No product photo was retrieved."],
+    notes: [],
     sources: [
       {
         label: "B&H RTX 5080 desktops",
@@ -556,14 +570,17 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "No single live new price. Best Buy said this desktop is no longer available new. The three figures were observed the same day.",
-    image: null,
+    image: {
+      url: "/photos/hp-omen-45l.webp",
+      credit: "Product image published on HP’s OMEN 45L GT22-3090 page.",
+    },
     availability: {
       label: "Not sold new",
       detail: "Best Buy said it is no longer available new.",
       bucket: "unavailable",
     },
     included: [],
-    notes: ["RAM speed was not stated. No product photo was retrieved."],
+    notes: ["RAM speed was not stated."],
     sources: [
       {
         label: "Best Buy product JJGQJQVXTT",
@@ -598,7 +615,11 @@ const CATALOG: Product[] = [
     prices: [{ usd: 5299, seller: "Best Buy" }],
     compareAt: null,
     priceCaution: null,
-    image: null,
+    image: {
+      url: "/photos/hp-omen-max.webp",
+      credit:
+        "Public HP product image of an OMEN 45L desktop with Cryo Chamber cooling. Not a photo of Best Buy SKU 12532507.",
+    },
     availability: {
       label: "Not stated",
       detail: "The Best Buy listing did not state stock in the fetch.",
@@ -609,7 +630,6 @@ const CATALOG: Product[] = [
       "A manufacturer model code was not in the fetch.",
       "VRAM size was not stated. RAM type and speed were not stated.",
       "UPC on that page: 0810215807925.",
-      "No product photo was retrieved. The fetch timed out before a photo URL could be read.",
     ],
     sources: [
       {
@@ -642,14 +662,18 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "This is a search result, not a product-detail page. A model number was not on the tile. The tile said it was not yet reviewed.",
-    image: null,
+    image: {
+      url: "/photos/clx-set.webp",
+      credit:
+        "Public product photo of a CLX SET gaming desktop. Not the Best Buy search tile.",
+    },
     availability: {
       label: "Not stated",
       detail: "The Best Buy search tile did not state stock.",
       bucket: "unknown",
     },
     included: [],
-    notes: ["VRAM size was not stated on the tile. No product photo was retrieved."],
+    notes: ["VRAM size was not stated on the tile."],
     sources: [
       {
         label: "Best Buy gaming-desktop search",
@@ -770,7 +794,11 @@ const CATALOG: Product[] = [
     compareAt: null,
     priceCaution:
       "An order code was not in the category snippet. This is not the ACT1250 configuration. Category prices on Dell change with the configurator. The tile also showed an estimated value of $11,499.99, which is not listed here as a second street price.",
-    image: null,
+    image: {
+      url: "/photos/alienware-aurora.webp",
+      credit:
+        "Front view from the Dell Alienware Aurora gallery. Not a photo of the RTX 5090 category tile.",
+    },
     availability: {
       label: "Not stated",
       detail: "The Dell category tile did not state stock.",
@@ -779,7 +807,6 @@ const CATALOG: Product[] = [
     included: [],
     notes: [
       "A second Aurora preset on the same page, with a Ryzen 9 9950X3D2, had no price in the text that was captured, so it is not listed.",
-      "No product photo was retrieved.",
     ],
     sources: [
       {

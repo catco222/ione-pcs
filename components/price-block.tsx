@@ -17,10 +17,7 @@ export function PriceBlock({
 
   return (
     <div>
-      <p className="text-xs tracking-wide text-[#3A4F66] uppercase">
-        {phrase(primary.seller)}
-      </p>
-      <p className={detailed ? "mt-2 text-3xl font-semibold text-[#192a3d]" : "mt-2 text-xl font-semibold text-[#192a3d]"}>
+      <p className={detailed ? "text-3xl font-semibold text-[#192a3d]" : "text-xl font-semibold text-[#192a3d]"}>
         {formatMnt(estimateMnt(primary.usd))}
       </p>
       {detailed && product.priceCaution ? (

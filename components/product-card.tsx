@@ -2,13 +2,11 @@
 
 import Link from "next/link";
 import { CompareToggle } from "@/components/compare-toggle";
-import { useI18n } from "@/components/language-provider";
 import { PriceBlock } from "@/components/price-block";
 import { ProductPhoto } from "@/components/product-photo";
 import { gpuLine, type Product } from "@/lib/catalog";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { t } = useI18n();
   const href = `/gaming-pcs/${product.slug}`;
 
   return (
@@ -30,15 +28,15 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-base font-semibold text-[#192a3d]">{gpuLine(product)}</p>
         <dl className="space-y-1 text-sm text-[#3A4F66]">
           <div className="flex justify-between gap-4">
-            <dt>{t("card.cpu")}</dt>
+            <dt>CPU</dt>
             <dd className="text-right">{product.cpu}</dd>
           </div>
           <div className="flex justify-between gap-4">
-            <dt>{t("card.ram")}</dt>
+            <dt>RAM</dt>
             <dd className="text-right">{product.ram}</dd>
           </div>
           <div className="flex justify-between gap-4">
-            <dt>{t("card.storage")}</dt>
+            <dt>Storage</dt>
             <dd className="text-right">
               {product.storage}
               {product.extraStorage ? ` + ${product.extraStorage}` : ""}

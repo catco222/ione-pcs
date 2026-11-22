@@ -12,5 +12,6 @@ export function formatUsd(amount: number): string {
 }
 
 export function formatMnt(amount: number): string {
-  return `₮${tugrik.format(amount)}`;
+  const rounded = Math.round(amount / 1000) * 1000;
+  return `₮${tugrik.format(rounded)}`;
 }

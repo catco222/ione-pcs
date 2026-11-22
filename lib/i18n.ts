@@ -199,7 +199,7 @@ const mn: Record<MessageKey, string> = {
   "lang.group": "Хэл",
   "lang.en": "Англи",
   "lang.mn": "Монгол",
-  "hero.title": "Тоглоомын ширээний компьютер",
+  "hero.title": "Gamer PCs",
   "hero.lede":
     "iOne тоглоомчдод хамгийн өргөн сонголтыг санал болгодог. Хамгийн хүчирхэг компьютерийг манайхаас аваарай.",
   "hero.browse": "Gamer PC үзэх",

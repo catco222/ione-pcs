@@ -7,8 +7,7 @@ import { useI18n } from "@/components/language-provider";
 import { PriceBlock } from "@/components/price-block";
 import { ProductCard } from "@/components/product-card";
 import { ProductPhoto } from "@/components/product-photo";
-import { useLocalizedSpecs } from "@/components/spec-rows";
-import { gpuLine, type Product } from "@/lib/catalog";
+import { gpuLine, specRows, type Product } from "@/lib/catalog";
 
 export function ProductView({
   product,
@@ -18,7 +17,7 @@ export function ProductView({
   related: Product[];
 }) {
   const { t } = useI18n();
-  const rows = useLocalizedSpecs(product);
+  const rows = specRows(product);
   const highlights: [string, string][] = [
     [t("card.cpu"), product.cpu],
     ["GPU", gpuLine(product)],
@@ -67,11 +66,11 @@ export function ProductView({
       </div>
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.specs")}</h2>
+        <h2 className="text-xl font-semibold text-[#192a3d]">Specifications</h2>
         <div className="mt-4 overflow-x-auto rounded-lg border border-[#d5dee6] bg-white">
           <table className="w-full min-w-[36rem] text-sm">
             <caption className="sr-only">
-              {t("product.specsCaption", { name: `${product.brand} ${product.model}` })}
+              Specifications for {product.brand} {product.model}
             </caption>
             <tbody>
               {rows.map((row) => (

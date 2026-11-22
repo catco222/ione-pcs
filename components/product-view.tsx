@@ -95,51 +95,6 @@ export function ProductView({
         </div>
       </section>
 
-      <section className="mt-10 grid gap-8 lg:grid-cols-2">
-        <div>
-          <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.warrantyTitle")}</h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#3A4F66]">
-            {t("product.warranty", {
-              value: product.warranty ? phrase(product.warranty) : t("product.warrantyMissing"),
-            })}
-          </p>
-          {product.included.length > 0 ? (
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-[#3A4F66]">
-              {product.included.map((item) => (
-                <li key={item}>{phrase(item)}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-3 text-sm leading-relaxed text-[#3A4F66]">{t("product.noBundle")}</p>
-          )}
-          {product.notes.length > 0 ? (
-            <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[#3A4F66]">
-              {product.notes.map((note) => (
-                <li key={note}>{phrase(note)}</li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.sources")}</h2>
-          <ul className="mt-3 space-y-2 text-sm">
-            {product.sources.map((source) => (
-              <li key={source.url}>
-                <a
-                  href={source.url}
-                  className="text-[#2872fa] hover:underline"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {phrase(source.label)}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-sm leading-relaxed text-[#3A4F66]">{t("product.sourcesNote")}</p>
-        </div>
-      </section>
-
       <section className="mt-12">
         <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.similar")}</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

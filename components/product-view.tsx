@@ -69,11 +69,8 @@ export function ProductView({
 
       <section className="mt-10 max-w-xl">
         <h2 className="text-xl font-semibold text-[#192a3d]">{t("product.ask")}</h2>
-        <p className="mt-2 text-sm leading-relaxed text-[#3A4F66]">
-          {t("product.askBody", { email: company.email })}
-        </p>
         <div className="mt-4">
-          <InquiryForm defaultSlug={product.slug} />
+          <InquiryForm defaultSlug={product.slug} order />
         </div>
       </section>
 

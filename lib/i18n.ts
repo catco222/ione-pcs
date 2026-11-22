@@ -93,7 +93,7 @@ const en = {
   "product.shop": "Shop guide: {value}",
   "product.shopNote":
     "Resolution bands are grouped here from the GPU class. They are not a manufacturer rating.",
-  "product.ask": "Ask about this system",
+  "product.ask": "Order",
   "product.askBody":
     "There is no checkout and no reserve. Prepare an inquiry and send it to {email}. iOne has not published stock, freight, or a local selling price for this tower.",
   "product.specs": "Specifications",
@@ -146,10 +146,12 @@ const en = {
   "form.name": "Name",
   "form.email": "Email",
   "form.phone": "Phone, if you want a call",
+  "form.phoneNumber": "Phone number",
   "form.system": "System",
   "form.systemNone": "Not a specific system",
   "form.message": "Message",
   "form.submit": "Prepare inquiry",
+  "form.order": "Order",
   "form.note": "Stays in this browser. iOne is not charged and no order is placed.",
   "form.errName": "Enter your name.",
   "form.errEmail": "Enter an email address.",
@@ -290,7 +292,7 @@ const mn: Record<MessageKey, string> = {
   "product.shop": "Дэлгүүрийн зөвлөмж: {value}",
   "product.shopNote":
     "Нягтралын бүсийг энд GPU-ийн ангиллаас бүлэглэсэн. Үйлдвэрлэгчийн үнэлгээ биш.",
-  "product.ask": "Энэ системийн талаар асуух",
+  "product.ask": "Захиалах",
   "product.askBody":
     "Төлбөр тооцоо, захиалга байхгүй. Лавлагаа бэлтгээд {email} руу илгээнэ үү. iOne энэ компьютерын нөөц, тээвэр, орон нутгийн борлуулалтын үнийг нийтлээгүй.",
   "product.specs": "Үзүүлэлт",
@@ -343,10 +345,12 @@ const mn: Record<MessageKey, string> = {
   "form.name": "Нэр",
   "form.email": "Имэйл",
   "form.phone": "Утас, залгахыг хүсвэл",
+  "form.phoneNumber": "Утасны дугаар",
   "form.system": "Систем",
   "form.systemNone": "Тодорхой систем биш",
   "form.message": "Зурвас",
   "form.submit": "Лавлагаа бэлтгэх",
+  "form.order": "Захиалах",
   "form.note": "Энэ хөтөч дээр үлдэнэ. iOne-д төлбөр тооцогдохгүй, захиалга хийгдэхгүй.",
   "form.errName": "Нэрээ оруулна уу.",
   "form.errEmail": "Имэйл хаяг оруулна уу.",

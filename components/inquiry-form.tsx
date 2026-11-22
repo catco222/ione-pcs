@@ -27,9 +27,11 @@ const fieldClass = "mt-1.5 h-10 bg-white";
 export function InquiryForm({
   defaultSlug = "",
   presetMessage = "",
+  order = false,
 }: {
   defaultSlug?: string;
   presetMessage?: string;
+  order?: boolean;
 }) {
   const { t, lang } = useI18n();
   const [prepared, setPrepared] = useState<Prepared | null>(null);
@@ -38,15 +40,17 @@ export function InquiryForm({
   const [copied, setCopied] = useState(false);
   const product = PRODUCTS.find((item) => item.slug === defaultSlug);
   const price = product ? primaryPrice(product) : null;
-  const preset = product
-    ? t("form.preset", {
-        brand: product.brand,
-        model: product.model,
-        part: product.part ? ` (${product.part})` : "",
-        usd: formatUsd(price?.usd ?? 0),
-        mnt: formatMnt(estimateMnt(price?.usd ?? 0)),
-      })
-    : presetMessage;
+  const preset = order
+    ? ""
+    : product
+      ? t("form.preset", {
+          brand: product.brand,
+          model: product.model,
+          part: product.part ? ` (${product.part})` : "",
+          usd: formatUsd(price?.usd ?? 0),
+          mnt: formatMnt(estimateMnt(price?.usd ?? 0)),
+        })
+      : presetMessage;
 
   if (prepared) {
     const subject = prepared.system
@@ -57,8 +61,7 @@ export function InquiryForm({
       `${t("form.mailEmail")}: ${prepared.email}`,
       `${t("form.mailPhone")}: ${prepared.phone || t("form.phoneMissing")}`,
       `${t("form.mailSystem")}: ${prepared.system || t("form.systemMissing")}`,
-      "",
-      prepared.message,
+      ...(prepared.message ? ["", prepared.message] : []),
     ].join("\n");
     const mailto = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
@@ -85,10 +88,12 @@ export function InquiryForm({
             <dt className="text-[#3A4F66]">{t("form.system")}</dt>
             <dd className="text-[#192a3d]">{prepared.system || t("form.systemMissing")}</dd>
           </div>
-          <div>
-            <dt className="text-[#3A4F66]">{t("form.message")}</dt>
-            <dd className="whitespace-pre-wrap text-[#192a3d]">{prepared.message}</dd>
-          </div>
+          {order ? null : (
+            <div>
+              <dt className="text-[#3A4F66]">{t("form.message")}</dt>
+              <dd className="whitespace-pre-wrap text-[#192a3d]">{prepared.message}</dd>
+            </div>
+          )}
         </dl>
         <div className="mt-5 flex flex-wrap gap-2">
           <Button className="h-10 px-4" nativeButton={false} render={<a href={mailto} />}>
@@ -130,13 +135,13 @@ export function InquiryForm({
     const email = String(data.get("email") ?? "").trim();
     const phone = String(data.get("phone") ?? "").trim();
     const slug = String(data.get("system") ?? "");
-    const message = String(data.get("message") ?? "").trim();
+    const message = order ? "" : String(data.get("message") ?? "").trim();
     const next: Errors = {};
     if (name.length < 2) next.name = "form.errName";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       next.email = "form.errEmail";
     }
-    if (message.length < 8) next.message = "form.errMessage";
+    if (!order && message.length < 8) next.message = "form.errMessage";
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     const chosen = PRODUCTS.find((item) => item.slug === slug);
@@ -193,7 +198,7 @@ export function InquiryForm({
         ) : null}
       </div>
       <div>
-        <Label htmlFor="inquiry-phone">{t("form.phone")}</Label>
+        <Label htmlFor="inquiry-phone">{order ? t("form.phoneNumber") : t("form.phone")}</Label>
         <Input id="inquiry-phone" name="phone" type="tel" autoComplete="tel" className={fieldClass} />
       </div>
       <div>
@@ -212,22 +217,24 @@ export function InquiryForm({
           ))}
         </select>
       </div>
-      <div>
-        <Label htmlFor="inquiry-message">{t("form.message")}</Label>
-        <Textarea
-          id="inquiry-message"
-          name="message"
-          defaultValue={preset}
-          className="mt-1.5 min-h-32 bg-white"
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "inquiry-message-error" : undefined}
-        />
-        {errors.message ? (
-          <p id="inquiry-message-error" className="mt-1 text-sm text-[#9f2d2d]">
-            {t(errors.message)}
-          </p>
-        ) : null}
-      </div>
+      {order ? null : (
+        <div>
+          <Label htmlFor="inquiry-message">{t("form.message")}</Label>
+          <Textarea
+            id="inquiry-message"
+            name="message"
+            defaultValue={preset}
+            className="mt-1.5 min-h-32 bg-white"
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={errors.message ? "inquiry-message-error" : undefined}
+          />
+          {errors.message ? (
+            <p id="inquiry-message-error" className="mt-1 text-sm text-[#9f2d2d]">
+              {t(errors.message)}
+            </p>
+          ) : null}
+        </div>
+      )}
       <Button
         type="button"
         className="h-10 px-4"
@@ -236,9 +243,9 @@ export function InquiryForm({
           if (form) prepare(form);
         }}
       >
-        {t("form.submit")}
+        {order ? t("form.order") : t("form.submit")}
       </Button>
-      <p className="text-xs leading-relaxed text-[#3A4F66]">{t("form.note")}</p>
+      {order ? null : <p className="text-xs leading-relaxed text-[#3A4F66]">{t("form.note")}</p>}
     </form>
   );
 }

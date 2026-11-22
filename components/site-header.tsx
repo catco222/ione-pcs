@@ -1,14 +1,11 @@
 "use client";
 
-import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
-import { MongoliaFlag, UsFlag } from "@/components/flags";
 import { useI18n } from "@/components/language-provider";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
-import type { Lang } from "@/lib/i18n";
 import {
   Sheet,
   SheetContent,
@@ -30,32 +27,17 @@ function isActive(pathname: string, href: string): boolean {
 
 function LanguageSwitch() {
   const { lang, setLang, t } = useI18n();
-  const options: { id: Lang; label: string; flag: ReactNode }[] = [
-    { id: "mn", label: t("lang.mn"), flag: <MongoliaFlag /> },
-    { id: "en", label: t("lang.en"), flag: <UsFlag /> },
-  ];
+  const next = lang === "en" ? "mn" : "en";
 
   return (
-    <div className="flex items-center gap-1" role="group" aria-label={t("lang.group")}>
-      {options.map((option) => {
-        const selected = lang === option.id;
-        return (
-          <button
-            key={option.id}
-            type="button"
-            aria-pressed={selected}
-            aria-label={option.label}
-            onClick={() => setLang(option.id)}
-            className={cn(
-              "inline-flex h-8 w-10 items-center justify-center rounded-md border",
-              selected ? "border-white bg-white/10" : "border-transparent opacity-70 hover:opacity-100",
-            )}
-          >
-            {option.flag}
-          </button>
-        );
-      })}
-    </div>
+    <button
+      type="button"
+      onClick={() => setLang(next)}
+      aria-label={next === "mn" ? t("lang.mn") : t("lang.en")}
+      className="inline-flex h-8 items-center px-1 text-sm font-medium tracking-wide text-white hover:text-[#d5dee6]"
+    >
+      {lang === "en" ? "МОН" : "ENG"}
+    </button>
   );
 }
 

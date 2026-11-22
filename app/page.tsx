@@ -10,7 +10,6 @@ import {
   estimateMnt,
   primaryPrice,
 } from "@/lib/catalog";
-import { company, services } from "@/lib/company";
 import { emptyQuery, catalogHref } from "@/lib/query";
 
 const FEATURED = [
@@ -146,47 +145,6 @@ export default function HomePage() {
           ))}
         </div>
       </Container>
-
-      <section className="border-t border-[#d5dee6] bg-white">
-        <Container className="py-12 sm:py-16">
-          <h2 className="text-2xl font-semibold text-[#192a3d]">
-            <Tx k="home.services" />
-          </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#3A4F66]">
-            <Phrase text={company.about} />
-          </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {services.map((service) => (
-              <article key={service.slug} className="rounded-lg border border-[#d5dee6] p-5">
-                <h3 className="font-semibold text-[#192a3d]">
-                  <Phrase text={service.title} />
-                </h3>
-                <ul className="mt-3 space-y-2 text-sm text-[#3A4F66]">
-                  {service.items.map((item) => (
-                    <li key={item}>
-                      <Phrase text={item} />
-                    </li>
-                  ))}
-                </ul>
-                <Link href={service.href} className="mt-4 inline-block text-sm text-[#2872fa] hover:underline">
-                  <Phrase text={service.title} />
-                </Link>
-              </article>
-            ))}
-          </div>
-          <div className="mt-8 max-w-3xl">
-            <h3 className="font-semibold text-[#192a3d]">
-              <Phrase text={company.konaTitle} />
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#3A4F66]">
-              <Phrase text={company.konaBody} />
-            </p>
-            <Link href="/services/smart-cards" className="mt-3 inline-block text-sm text-[#2872fa] hover:underline">
-              <Tx k="home.smartCards" />
-            </Link>
-          </div>
-        </Container>
-      </section>
     </>
   );
 }

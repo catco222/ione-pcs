@@ -12,17 +12,7 @@ import {
 } from "@/lib/catalog";
 import { emptyQuery, catalogHref } from "@/lib/query";
 
-const FEATURED = [
-  "cyberpowerpc-gamer-xtreme-gxi2000cstv3",
-  "corsair-vengeance-a7500",
-  "lenovo-legion-tower-7i-gen-10",
-  "maingear-mg-1-ultimate",
-];
-
 export default function HomePage() {
-  const featured = FEATURED.map((slug) => PRODUCTS.find((product) => product.slug === slug)).filter(
-    (product): product is (typeof PRODUCTS)[number] => Boolean(product),
-  );
   const brands = [...new Set(PRODUCTS.map((product) => product.brand))];
 
   return (
@@ -68,6 +58,7 @@ export default function HomePage() {
             <ul className="mt-3 space-y-2">
               {GPU_TIERS.map((gpu) => {
                 const count = PRODUCTS.filter((product) => product.gpuTier === gpu).length;
+                if (count === 0) return null;
                 return (
                   <li key={gpu}>
                     <Link
@@ -92,6 +83,7 @@ export default function HomePage() {
                   const mnt = estimateMnt(primaryPrice(product).usd);
                   return mnt >= band.min && mnt < band.max;
                 }).length;
+                if (count === 0) return null;
                 return (
                   <li key={band.id}>
                     <Link
@@ -131,16 +123,11 @@ export default function HomePage() {
           </article>
         </div>
 
-        <div className="mt-14 flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-semibold text-[#192a3d]">
-            <Tx k="home.across" />
-          </h2>
-          <Link href="/gaming-pcs" className="text-sm text-[#2872fa] hover:underline">
-            <Tx k="home.all" vars={{ count: PRODUCTS.length }} />
-          </Link>
-        </div>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {featured.map((product) => (
+        <h2 className="mt-14 text-2xl font-semibold text-[#192a3d]">
+          <Tx k="home.across" />
+        </h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {PRODUCTS.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}
         </div>

@@ -19,7 +19,7 @@ Open [http://localhost:3847](http://localhost:3847).
 
 - `/` — home
 - `/gaming-pcs` — filterable catalog
-- `/gaming-pcs/[slug]` — one system (fifteen slugs)
+- `/gaming-pcs/[slug]` — one system
 - `/compare` — up to three systems
 - `/services`
 - `/services/it`

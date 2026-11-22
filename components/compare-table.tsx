@@ -32,7 +32,7 @@ export function CompareTable() {
     );
   }
 
-  const rows = localizeSpecs(products[0], t, phrase).map((row) => row.label);
+  const rows = localizeSpecs(products[0], phrase).map((row) => row.label);
 
   return (
     <div>
@@ -89,7 +89,7 @@ export function CompareTable() {
                 </th>
                 {products.map((product) => {
                   const value =
-                    localizeSpecs(product, t, phrase).find((row) => row.label === label)?.value ??
+                    localizeSpecs(product, phrase).find((row) => row.label === label)?.value ??
                     phrase("Not stated");
                   return (
                     <td key={product.slug} className="p-3 align-top whitespace-pre-line text-[#192a3d]">

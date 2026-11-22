@@ -9,7 +9,7 @@ import {
   primaryPrice,
   similarProducts,
 } from "@/lib/catalog";
-import { formatMnt, formatUsd } from "@/lib/format";
+import { formatMnt } from "@/lib/format";
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -24,7 +24,7 @@ export async function generateMetadata(
   const price = primaryPrice(product);
   return {
     title: `${product.brand} ${product.model}`,
-    description: `${gpuLine(product)}. Street estimate ${formatUsd(price.usd)}, about ${formatMnt(estimateMnt(price.usd))}. Not an iOne quote.`,
+    description: `${gpuLine(product)}. ${formatMnt(estimateMnt(price.usd))}.`,
   };
 }
 

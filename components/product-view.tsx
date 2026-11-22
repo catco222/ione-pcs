@@ -8,7 +8,7 @@ import { PriceBlock } from "@/components/price-block";
 import { ProductCard } from "@/components/product-card";
 import { ProductPhoto } from "@/components/product-photo";
 import { useLocalizedSpecs } from "@/components/spec-rows";
-import { gpuLine, resolutionOf, type Product } from "@/lib/catalog";
+import { gpuLine, type Product } from "@/lib/catalog";
 import { company } from "@/lib/company";
 
 export function ProductView({
@@ -51,15 +51,10 @@ export function ProductView({
             {product.model}
           </h1>
           {product.part ? <p className="mt-1 text-sm text-[#3A4F66]">{product.part}</p> : null}
-          <p className="mt-3 text-base text-[#192a3d]">
-            {t("product.shop", { value: resolutionOf(product) })}
-          </p>
-          <p className="mt-1 text-sm text-[#3A4F66]">{t("product.shopNote")}</p>
 
           <div className="mt-6">
             <PriceBlock product={product} detailed />
           </div>
-          <p className="mt-4 text-sm text-[#192a3d]">{phrase(product.availability.detail)}</p>
 
           <dl className="mt-6 grid grid-cols-2 gap-3">
             {highlights.map(([label, value]) => (

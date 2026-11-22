@@ -11,7 +11,7 @@ import { catalogHref, emptyQuery, filterProducts, parseCatalogQuery } from "@/li
 export const metadata = {
   title: "Gaming PCs",
   description:
-    "Filter fifteen prebuilt gaming desktops by GPU, processor, memory, storage, resolution band, tugrik budget, and brand. Prices are estimates.",
+    "Filter prebuilt gaming desktops by GPU, processor, memory, storage, resolution band, tugrik budget, and brand.",
 };
 
 const brands = [...new Set(PRODUCTS.map((product) => product.brand))];

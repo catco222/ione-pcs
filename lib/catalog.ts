@@ -1,4 +1,4 @@
-import { formatMnt, formatUsd } from "@/lib/format";
+import { formatMnt } from "@/lib/format";
 
 export const EXCHANGE = {
   mntPerUsd: 3607,
@@ -107,7 +107,7 @@ export type Product = {
   sources: { label: string; url: string }[];
 };
 
-export const PRODUCTS: Product[] = [
+const CATALOG: Product[] = [
   {
     slug: "cyberpowerpc-gamer-xtreme-gxi2000cstv3",
     brand: "CyberPowerPC",
@@ -790,6 +790,8 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+export const PRODUCTS: Product[] = CATALOG.filter((product) => product.image !== null);
+
 const ORDER = new Map(PRODUCTS.map((product, index) => [product.slug, index]));
 
 export function getProduct(slug: string): Product | undefined {
@@ -835,22 +837,11 @@ export function similarProducts(product: Product, count = 3): Product[] {
 export type SpecRow = { label: string; value: string };
 
 export function specRows(product: Product): SpecRow[] {
-  const priceLines = product.prices
-    .map(
-      (price) =>
-        `${formatUsd(price.usd)} · est. ${formatMnt(estimateMnt(price.usd))} · ${price.seller}`,
-    )
-    .join("\n");
   const mntLines = product.prices
-    .map(
-      (price) =>
-        `${formatMnt(estimateMnt(price.usd))} at ${formatUsd(price.usd)}`,
-    )
+    .map((price) => formatMnt(estimateMnt(price.usd)))
     .join("\n");
 
   return [
-    { label: "Shop guide", value: resolutionOf(product) },
-    { label: "Availability", value: product.availability.detail },
     { label: "Case", value: product.caseName ?? "Not stated" },
     { label: "Processor", value: product.cpu },
     { label: "Graphics", value: product.gpu },
@@ -862,8 +853,7 @@ export function specRows(product: Product): SpecRow[] {
     { label: "Additional storage", value: product.extraStorage ?? "Not stated" },
     { label: "Operating system", value: product.os ?? "Not stated" },
     { label: "Warranty", value: product.warranty ?? "Not stated" },
-    { label: "Street price (USD)", value: priceLines },
-    { label: "Estimated MNT", value: mntLines },
+    { label: "MNT", value: mntLines },
   ];
 }
 

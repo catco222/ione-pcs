@@ -5,10 +5,10 @@ import { CompareToggle } from "@/components/compare-toggle";
 import { useI18n } from "@/components/language-provider";
 import { PriceBlock } from "@/components/price-block";
 import { ProductPhoto } from "@/components/product-photo";
-import { gpuLine, resolutionOf, type Product } from "@/lib/catalog";
+import { gpuLine, type Product } from "@/lib/catalog";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { t, phrase } = useI18n();
+  const { t } = useI18n();
   const href = `/gaming-pcs/${product.slug}`;
 
   return (
@@ -26,9 +26,6 @@ export function ProductCard({ product }: { product: Product }) {
               {product.model}
             </Link>
           </h2>
-          <p className="mt-1 text-xs text-[#3A4F66]">
-            {t("card.shop", { value: resolutionOf(product) })}
-          </p>
         </div>
         <p className="text-base font-semibold text-[#192a3d]">{gpuLine(product)}</p>
         <dl className="space-y-1 text-sm text-[#3A4F66]">
@@ -49,7 +46,6 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </dl>
         <PriceBlock product={product} />
-        <p className="text-sm text-[#192a3d]">{phrase(product.availability.label)}</p>
         <div className="mt-auto border-t border-[#e1e8ed] pt-3">
           <CompareToggle slug={product.slug} />
         </div>

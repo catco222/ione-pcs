@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Container } from "@/components/container";
 import { Phrase, Tx } from "@/components/i18n-text";
 import { ProductCard } from "@/components/product-card";
-import { RateNote } from "@/components/rate-note";
 import { Button } from "@/components/ui/button";
 import {
   BUDGETS,
@@ -10,7 +9,6 @@ import {
   PRODUCTS,
   estimateMnt,
   primaryPrice,
-  resolutionOf,
 } from "@/lib/catalog";
 import { company, services } from "@/lib/company";
 import { emptyQuery, catalogHref } from "@/lib/query";
@@ -146,17 +144,6 @@ export default function HomePage() {
           {featured.map((product) => (
             <ProductCard key={product.slug} product={product} />
           ))}
-        </div>
-        <p className="mt-3 text-xs text-[#3A4F66]">
-          <Tx
-            k="home.shopNote"
-            vars={{
-              bands: [...new Set(featured.map((product) => resolutionOf(product)))].join(", "),
-            }}
-          />
-        </p>
-        <div className="mt-4">
-          <RateNote />
         </div>
       </Container>
 

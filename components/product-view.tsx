@@ -42,7 +42,7 @@ export function ProductView({
 
       <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
         <div className="overflow-hidden rounded-lg border border-[#d5dee6] bg-white">
-          <ProductPhoto product={product} priority showCredit />
+          <ProductPhoto product={product} priority />
         </div>
 
         <div>

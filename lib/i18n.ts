@@ -402,7 +402,7 @@ const phrases: Record<string, string> = {
   "Innovative IT services, card technologies, and secure digital solutions":
     "Шинэлэг мэдээллийн технологийн үйлчилгээ, картын технологи, найдвартай дижитал шийдэл",
   "iOne is a technology company with a 10+ year history serving the Mongolian market. We specialize in cloud services, AI integration, blockchain consulting, and professional EMV smart card supply as the official distributor of Kona-M, Korea's leading card manufacturer.":
-    "iOne нь Монголын зах зээлд 10-аас дээш жил үйлчилсэн түүхтэй технологийн компани. Бид үүлэн үйлчилгээ, хиймэл оюуны интеграц, блокчейний зөвлөх үйлчилгээ, мөн Солонгосын тэргүүлэгч карт үйлдвэрлэгч Kona-M-ийн албан ёсны дистрибьютерээр мэргэжлийн EMV ухаалаг карт нийлүүлэх чиглэлээр мэргэшдэг.",
+    "iOne нь Монголын зах зээлд 10-аас дээш жил үйлчилсэн түүхтэй технологийн компани юм. Бид үүлэн үйлчилгээ, хиймэл оюун ухаан, блокчейний зөвлөх үйлчилгээ үзүүлэхээс гадна, Солонгосын тэргүүлэгч карт үйлдвэрлэгч Kona-M-ийн албан ёсны дистрибьютер юм.",
   "iOne is a technology company providing IT solutions, cloud services, AI integration, blockchain consulting, and professional EMV smart card supply as the official distributor of Kona-M, Korea’s leading card manufacturer.":
     "iOne нь мэдээллийн технологийн шийдэл, үүлэн үйлчилгээ, хиймэл оюуны интеграц, блокчейний зөвлөх үйлчилгээ үзүүлдэг технологийн компани бөгөөд Солонгосын тэргүүлэгч карт үйлдвэрлэгч Kona-M-ийн албан ёсны дистрибьютерээр мэргэжлийн EMV ухаалаг карт нийлүүлдэг.",
   "Official Distributor of Kona-M Smart Cards": "Kona-M ухаалаг картын албан ёсны дистрибьютер",

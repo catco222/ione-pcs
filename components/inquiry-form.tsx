@@ -1,26 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PRODUCTS, estimateMnt, primaryPrice } from "@/lib/catalog";
-import { company } from "@/lib/company";
 import { formatMnt, formatUsd } from "@/lib/format";
 import type { MessageKey } from "@/lib/i18n";
 
 type Field = "name" | "email" | "message";
 type Errors = Partial<Record<Field, MessageKey>>;
-
-type Prepared = {
-  name: string;
-  email: string;
-  phone: string;
-  system: string;
-  message: string;
-};
 
 const fieldClass = "mt-1.5 h-10 bg-white";
 
@@ -34,10 +26,11 @@ export function InquiryForm({
   order?: boolean;
 }) {
   const { t, lang } = useI18n();
-  const [prepared, setPrepared] = useState<Prepared | null>(null);
+  const pathname = usePathname();
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [formKey, setFormKey] = useState(0);
-  const [copied, setCopied] = useState(false);
   const product = PRODUCTS.find((item) => item.slug === defaultSlug);
   const price = product ? primaryPrice(product) : null;
   const preset = order
@@ -52,84 +45,15 @@ export function InquiryForm({
         })
       : presetMessage;
 
-  if (prepared) {
-    const subject = prepared.system
-      ? t("form.subject", { system: prepared.system })
-      : t("form.subjectGeneral");
-    const body = [
-      `${t("form.mailName")}: ${prepared.name}`,
-      `${t("form.mailEmail")}: ${prepared.email}`,
-      `${t("form.mailPhone")}: ${prepared.phone || t("form.phoneMissing")}`,
-      `${t("form.mailSystem")}: ${prepared.system || t("form.systemMissing")}`,
-      ...(prepared.message ? ["", prepared.message] : []),
-    ].join("\n");
-    const mailto = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+  if (sent) {
     return (
-      <div className="rounded-lg border border-[#d5dee6] bg-white p-5" role="status">
-        <h2 className="text-xl font-semibold text-[#192a3d]">{t("form.ready")}</h2>
-        <p className="mt-2 text-sm leading-relaxed text-[#3A4F66]">
-          {t("form.readyBody", { email: company.email })}
-        </p>
-        <dl className="mt-4 space-y-2 text-sm">
-          <div>
-            <dt className="text-[#3A4F66]">{t("form.name")}</dt>
-            <dd className="text-[#192a3d]">{prepared.name}</dd>
-          </div>
-          <div>
-            <dt className="text-[#3A4F66]">{t("form.email")}</dt>
-            <dd className="text-[#192a3d]">{prepared.email}</dd>
-          </div>
-          <div>
-            <dt className="text-[#3A4F66]">{t("form.mailPhone")}</dt>
-            <dd className="text-[#192a3d]">{prepared.phone || t("form.phoneMissing")}</dd>
-          </div>
-          <div>
-            <dt className="text-[#3A4F66]">{t("form.system")}</dt>
-            <dd className="text-[#192a3d]">{prepared.system || t("form.systemMissing")}</dd>
-          </div>
-          {order ? null : (
-            <div>
-              <dt className="text-[#3A4F66]">{t("form.message")}</dt>
-              <dd className="whitespace-pre-wrap text-[#192a3d]">{prepared.message}</dd>
-            </div>
-          )}
-        </dl>
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Button className="h-10 px-4" nativeButton={false} render={<a href={mailto} />}>
-            {t("form.emailButton", { email: company.email })}
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="h-10 bg-white px-4"
-            onClick={() => {
-              void navigator.clipboard?.writeText(body).then(
-                () => setCopied(true),
-                () => setCopied(false),
-              );
-            }}
-          >
-            {copied ? t("form.copied") : t("form.copy")}
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            className="h-10"
-            onClick={() => {
-              setPrepared(null);
-              setCopied(false);
-              setFormKey((key) => key + 1);
-            }}
-          >
-            {t("form.another")}
-          </Button>
-        </div>
-      </div>
+      <p className="rounded-lg border border-[#d5dee6] bg-white p-5 text-base leading-relaxed text-[#192a3d]" role="status">
+        {t("form.thanks")}
+      </p>
     );
   }
 
-  function prepare(form: HTMLFormElement) {
+  async function submit(form: HTMLFormElement) {
     const data = new FormData(form);
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
@@ -138,30 +62,47 @@ export function InquiryForm({
     const message = order ? "" : String(data.get("message") ?? "").trim();
     const next: Errors = {};
     if (name.length < 2) next.name = "form.errName";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      next.email = "form.errEmail";
-    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "form.errEmail";
     if (!order && message.length < 8) next.message = "form.errMessage";
     setErrors(next);
+    setSendError(false);
     if (Object.keys(next).length > 0) return;
+
     const chosen = PRODUCTS.find((item) => item.slug === slug);
-    setPrepared({
-      name,
-      email,
-      phone,
-      system: chosen ? `${chosen.brand} ${chosen.model}` : "",
-      message,
-    });
+    setSending(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          system: chosen ? `${chosen.brand} ${chosen.model}` : "",
+          message,
+          page: pathname,
+        }),
+      });
+      if (!response.ok) {
+        setSendError(true);
+        return;
+      }
+      setSent(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
     <form
-      key={`${formKey}-${lang}`}
+      key={lang}
       className="space-y-4"
       noValidate
       onSubmit={(event) => {
         event.preventDefault();
-        prepare(event.currentTarget);
+        void submit(event.currentTarget);
       }}
     >
       <div>
@@ -235,16 +176,10 @@ export function InquiryForm({
           ) : null}
         </div>
       )}
-      <Button
-        type="button"
-        className="h-10 px-4"
-        onClick={(event) => {
-          const form = event.currentTarget.closest("form");
-          if (form) prepare(form);
-        }}
-      >
+      <Button type="submit" className="h-10 px-4" disabled={sending}>
         {order ? t("form.order") : t("form.submit")}
       </Button>
+      {sendError ? <p className="text-sm text-[#9f2d2d]">{t("form.sendError")}</p> : null}
     </form>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
+import { Phrase, Tx } from "@/components/i18n-text";
 import { ProductCard } from "@/components/product-card";
 import { RateNote } from "@/components/rate-note";
 import { Button } from "@/components/ui/button";
@@ -40,15 +41,14 @@ export default function HomePage() {
         />
         <Container className="relative py-16 sm:py-24">
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-            Gaming desktops
+            <Tx k="hero.title" />
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#d5dee6]">
-            iOne offers the widest range for gamers, from the most powerful gaming PCs to
-            budget-friendly ones.
+            <Tx k="hero.lede" />
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button className="h-11 px-4" nativeButton={false} render={<Link href="/gaming-pcs" />}>
-              Browse gaming PCs
+              <Tx k="hero.browse" />
             </Button>
             <Button
               variant="outline"
@@ -56,7 +56,7 @@ export default function HomePage() {
               nativeButton={false}
               render={<Link href="/compare" />}
             >
-              Compare
+              <Tx k="hero.compare" />
             </Button>
           </div>
         </Container>
@@ -65,7 +65,9 @@ export default function HomePage() {
       <Container className="py-12 sm:py-16">
         <div className="grid gap-4 lg:grid-cols-3">
           <article className="rounded-lg border border-[#d5dee6] bg-white p-5">
-            <h3 className="font-semibold text-[#192a3d]">GPU</h3>
+            <h3 className="font-semibold text-[#192a3d]">
+              <Tx k="home.gpu" />
+            </h3>
             <ul className="mt-3 space-y-2">
               {GPU_TIERS.map((gpu) => {
                 const count = PRODUCTS.filter((product) => product.gpuTier === gpu).length;
@@ -84,7 +86,9 @@ export default function HomePage() {
             </ul>
           </article>
           <article className="rounded-lg border border-[#d5dee6] bg-white p-5">
-            <h3 className="font-semibold text-[#192a3d]">Budget in MNT</h3>
+            <h3 className="font-semibold text-[#192a3d]">
+              <Tx k="home.budget" />
+            </h3>
             <ul className="mt-3 space-y-2">
               {BUDGETS.map((band) => {
                 const count = PRODUCTS.filter((product) => {
@@ -97,7 +101,9 @@ export default function HomePage() {
                       href={catalogHref({ ...emptyQuery(), budget: [band.id] })}
                       className="flex items-baseline justify-between gap-3 text-sm text-[#3A4F66] hover:text-[#2872fa]"
                     >
-                      <span>{band.label}</span>
+                      <span>
+                        <Phrase text={band.label} />
+                      </span>
                       <span>{count}</span>
                     </Link>
                   </li>
@@ -106,7 +112,9 @@ export default function HomePage() {
             </ul>
           </article>
           <article className="rounded-lg border border-[#d5dee6] bg-white p-5">
-            <h3 className="font-semibold text-[#192a3d]">Brand</h3>
+            <h3 className="font-semibold text-[#192a3d]">
+              <Tx k="home.brand" />
+            </h3>
             <ul className="mt-3 space-y-2">
               {brands.map((brand) => {
                 const count = PRODUCTS.filter((product) => product.brand === brand).length;
@@ -127,9 +135,11 @@ export default function HomePage() {
         </div>
 
         <div className="mt-14 flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-semibold text-[#192a3d]">Across the catalog</h2>
+          <h2 className="text-2xl font-semibold text-[#192a3d]">
+            <Tx k="home.across" />
+          </h2>
           <Link href="/gaming-pcs" className="text-sm text-[#2872fa] hover:underline">
-            All {PRODUCTS.length}
+            <Tx k="home.all" vars={{ count: PRODUCTS.length }} />
           </Link>
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -138,8 +148,12 @@ export default function HomePage() {
           ))}
         </div>
         <p className="mt-3 text-xs text-[#3A4F66]">
-          Shop guide on the cards ({[...new Set(featured.map((product) => resolutionOf(product)))].join(", ")}{" "}
-          and the rest of the range) is grouped from the GPU class. It is not a manufacturer rating.
+          <Tx
+            k="home.shopNote"
+            vars={{
+              bands: [...new Set(featured.map((product) => resolutionOf(product)))].join(", "),
+            }}
+          />
         </p>
         <div className="mt-4">
           <RateNote />
@@ -148,28 +162,40 @@ export default function HomePage() {
 
       <section className="border-t border-[#d5dee6] bg-white">
         <Container className="py-12 sm:py-16">
-          <h2 className="text-2xl font-semibold text-[#192a3d]">Services</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#3A4F66]">{company.about}</p>
+          <h2 className="text-2xl font-semibold text-[#192a3d]">
+            <Tx k="home.services" />
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#3A4F66]">
+            <Phrase text={company.about} />
+          </p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {services.map((service) => (
               <article key={service.slug} className="rounded-lg border border-[#d5dee6] p-5">
-                <h3 className="font-semibold text-[#192a3d]">{service.title}</h3>
+                <h3 className="font-semibold text-[#192a3d]">
+                  <Phrase text={service.title} />
+                </h3>
                 <ul className="mt-3 space-y-2 text-sm text-[#3A4F66]">
                   {service.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>
+                      <Phrase text={item} />
+                    </li>
                   ))}
                 </ul>
                 <Link href={service.href} className="mt-4 inline-block text-sm text-[#2872fa] hover:underline">
-                  {service.title}
+                  <Phrase text={service.title} />
                 </Link>
               </article>
             ))}
           </div>
           <div className="mt-8 max-w-3xl">
-            <h3 className="font-semibold text-[#192a3d]">{company.konaTitle}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#3A4F66]">{company.konaBody}</p>
+            <h3 className="font-semibold text-[#192a3d]">
+              <Phrase text={company.konaTitle} />
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-[#3A4F66]">
+              <Phrase text={company.konaBody} />
+            </p>
             <Link href="/services/smart-cards" className="mt-3 inline-block text-sm text-[#2872fa] hover:underline">
-              Smart card solutions
+              <Tx k="home.smartCards" />
             </Link>
           </div>
         </Container>

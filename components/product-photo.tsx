@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useI18n } from "@/components/language-provider";
 import type { Product } from "@/lib/catalog";
 
 export function ProductPhoto({
@@ -13,6 +14,7 @@ export function ProductPhoto({
   showCredit?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
+  const { t, phrase } = useI18n();
   const missing = !product.image || failed;
 
   return (
@@ -20,7 +22,7 @@ export function ProductPhoto({
       <div className="flex aspect-[4/3] items-center justify-center bg-[#f2f5f7]">
         {missing ? (
           <p className="px-6 text-center text-sm text-[#3A4F66]">
-            No product photo in the catalog
+            {t("photo.missing")}
           </p>
         ) : (
           // Manufacturer CDNs are loaded by the browser. Next's optimizer would have to fetch them server-side.
@@ -37,7 +39,7 @@ export function ProductPhoto({
       </div>
       {showCredit && product.image && !failed ? (
         <p className="px-4 pt-2 text-xs leading-relaxed text-[#3A4F66]">
-          {product.image.credit}
+          {phrase(product.image.credit)}
         </p>
       ) : null}
     </div>

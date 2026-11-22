@@ -1,11 +1,15 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
 import { useCompare } from "@/components/compare-provider";
+import { MongoliaFlag, UsFlag } from "@/components/flags";
+import { useI18n } from "@/components/language-provider";
 import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
+import type { Lang } from "@/lib/i18n";
 import {
   Sheet,
   SheetContent,
@@ -16,20 +20,53 @@ import {
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/gaming-pcs", label: "Gaming PCs" },
-  { href: "/compare", label: "Compare" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-];
+  { href: "/gaming-pcs", key: "nav.gaming" },
+  { href: "/compare", key: "nav.compare" },
+  { href: "/services", key: "nav.services" },
+  { href: "/about", key: "nav.about" },
+] as const;
 
 function isActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function LanguageSwitch() {
+  const { lang, setLang, t } = useI18n();
+  const options: { id: Lang; label: string; flag: ReactNode }[] = [
+    { id: "mn", label: t("lang.mn"), flag: <MongoliaFlag /> },
+    { id: "en", label: t("lang.en"), flag: <UsFlag /> },
+  ];
+
+  return (
+    <div className="flex items-center gap-1" role="group" aria-label={t("lang.group")}>
+      {options.map((option) => {
+        const selected = lang === option.id;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            aria-pressed={selected}
+            aria-label={option.label}
+            onClick={() => setLang(option.id)}
+            className={cn(
+              "inline-flex h-8 w-10 items-center justify-center rounded-md border",
+              selected ? "border-white bg-white/10" : "border-transparent opacity-70 hover:opacity-100",
+            )}
+          >
+            {option.flag}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
+  const { t } = useI18n();
   const { slugs, ready } = useCompare();
-  const compareLabel = ready && slugs.length > 0 ? `Compare (${slugs.length})` : "Compare";
+  const compareLabel =
+    ready && slugs.length > 0 ? t("nav.compareCount", { count: slugs.length }) : t("nav.compare");
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#111827] text-white">
@@ -37,13 +74,13 @@ export function SiteHeader() {
         href="#content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-[#192a3d]"
       >
-        Skip to content
+        {t("nav.skip")}
       </a>
-      <div className="mx-auto flex h-16 w-full max-w-[1290px] items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="shrink-0 text-white" aria-label="iOne home">
+      <div className="mx-auto flex h-16 w-full max-w-[1290px] items-center gap-4 px-4 sm:gap-6 sm:px-6">
+        <Link href="/" className="shrink-0 text-white" aria-label={t("nav.home")}>
           <Wordmark />
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.primary")}>
           {NAV.map((item) => (
             <Link
               key={item.href}
@@ -54,17 +91,18 @@ export function SiteHeader() {
               )}
               aria-current={isActive(pathname, item.href) ? "page" : undefined}
             >
-              {item.href === "/compare" ? compareLabel : item.label}
+              {item.href === "/compare" ? compareLabel : t(item.key)}
             </Link>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2">
+          <LanguageSwitch />
           <Button
             nativeButton={false}
             render={<Link href="/contact" />}
             className="h-9 px-3"
           >
-            Contact
+            {t("nav.contact")}
           </Button>
           <Sheet key={pathname}>
             <SheetTrigger
@@ -73,7 +111,7 @@ export function SiteHeader() {
                   variant="outline"
                   size="icon"
                   className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white lg:hidden"
-                  aria-label="Open menu"
+                  aria-label={t("nav.open")}
                 />
               }
             >
@@ -81,9 +119,9 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[min(100%,20rem)] bg-white">
               <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
+                <SheetTitle>{t("nav.menu")}</SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col px-4 pb-6" aria-label="Mobile">
+              <nav className="flex flex-col px-4 pb-6" aria-label={t("nav.mobile")}>
                 {NAV.map((item) => (
                   <Link
                     key={item.href}
@@ -94,11 +132,11 @@ export function SiteHeader() {
                     )}
                     aria-current={isActive(pathname, item.href) ? "page" : undefined}
                   >
-                    {item.href === "/compare" ? compareLabel : item.label}
+                    {item.href === "/compare" ? compareLabel : t(item.key)}
                   </Link>
                 ))}
                 <Link href="/contact" className="py-3 text-base font-medium text-[#2872fa]">
-                  Contact
+                  {t("nav.contact")}
                 </Link>
               </nav>
             </SheetContent>

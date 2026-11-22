@@ -1,5 +1,8 @@
+"use client";
+
 import Form from "next/form";
 import Link from "next/link";
+import { useI18n } from "@/components/language-provider";
 import { ProductCard } from "@/components/product-card";
 import { RateNote } from "@/components/rate-note";
 import { Button } from "@/components/ui/button";
@@ -66,27 +69,35 @@ export function CatalogBrowser({
   query: CatalogQuery;
   products: Product[];
 }) {
+  const { t, phrase } = useI18n();
   const brands = [...new Set(PRODUCTS.map((product) => product.brand))];
   const chips = filterChips(query);
   const filtersApplied = activeFilterCount(query);
   const queryKey = JSON.stringify(query);
+
+  function chipText(label: string): string {
+    if (label.startsWith("Search: ")) return t("chip.search", { q: label.slice("Search: ".length) });
+    if (label.endsWith(" GB RAM")) return t("chip.ram", { n: label.replace(" GB RAM", "") });
+    if (label.endsWith(" TB SSD")) return t("chip.ssd", { n: label.replace(" TB SSD", "") });
+    return phrase(label);
+  }
 
   return (
     <div key={queryKey}>
       <Form action="/gaming-pcs" scroll={false}>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
           <div className="min-w-0 flex-1">
-            <Label htmlFor="catalog-q">Search this list</Label>
+            <Label htmlFor="catalog-q">{t("catalog.search")}</Label>
             <Input
               id="catalog-q"
               name="q"
               defaultValue={query.q}
-              placeholder="Brand, model, GPU, or part"
+              placeholder={t("catalog.searchPlaceholder")}
               className={`mt-1.5 ${fieldClass}`}
             />
           </div>
           <div className="sm:w-56">
-            <Label htmlFor="catalog-sort">Sort</Label>
+            <Label htmlFor="catalog-sort">{t("catalog.sort")}</Label>
             <select
               id="catalog-sort"
               name="sort"
@@ -95,72 +106,81 @@ export function CatalogBrowser({
             >
               {SORTS.map((sort) => (
                 <option key={sort.id} value={sort.id}>
-                  {sort.label}
+                  {t(
+                    sort.id === "price-asc"
+                      ? "sort.priceAsc"
+                      : sort.id === "price-desc"
+                        ? "sort.priceDesc"
+                        : sort.id === "gpu"
+                          ? "sort.gpu"
+                          : "sort.recommended",
+                  )}
                 </option>
               ))}
             </select>
           </div>
           <Button type="submit" className="h-10 px-4">
-            Apply
+            {t("catalog.apply")}
           </Button>
         </div>
 
         <div className="mt-6 lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-8">
           <div className="rounded-lg border border-[#d5dee6] bg-white p-4 lg:border-0 lg:bg-transparent lg:p-0">
             <p className="text-sm font-semibold text-[#192a3d] lg:sr-only">
-              Filters{filtersApplied > 0 ? ` (${filtersApplied})` : ""}
+              {t("catalog.filters")}
+              {filtersApplied > 0 ? ` (${filtersApplied})` : ""}
             </p>
             <div className="mt-4 space-y-6 lg:mt-0">
               <CheckList
-                legend="GPU"
+                legend={t("catalog.gpu")}
                 name="gpu"
                 selected={query.gpu}
                 options={GPU_TIERS.map((gpu) => ({ value: gpu, label: gpu }))}
               />
               <CheckList
-                legend="CPU family"
+                legend={t("catalog.cpu")}
                 name="cpu"
                 selected={query.cpu}
                 options={CPU_FAMILIES.map((cpu) => ({ value: cpu, label: cpu }))}
               />
               <CheckList
-                legend="RAM"
+                legend={t("catalog.ram")}
                 name="ram"
                 selected={query.ram.map(String)}
                 options={RAM_OPTIONS.map((ram) => ({ value: String(ram), label: `${ram} GB` }))}
               />
               <CheckList
-                legend="Storage"
+                legend={t("catalog.storage")}
                 name="storage"
                 selected={query.storage.map(String)}
-                hint="Primary SSD size. A hard drive, when one is listed, is extra."
+                hint={t("catalog.storageHint")}
                 options={STORAGE_OPTIONS.map((tb) => ({ value: String(tb), label: `${tb} TB` }))}
               />
               <CheckList
-                legend="Target resolution"
+                legend={t("catalog.target")}
                 name="resolution"
                 selected={query.resolution}
-                hint="A shop guide from the GPU class, not a manufacturer rating."
+                hint={t("catalog.targetHint")}
                 options={RESOLUTIONS.map((resolution) => ({
                   value: resolution,
                   label: resolution,
                 }))}
               />
               <CheckList
-                legend="Price in MNT"
+                legend={t("catalog.price")}
                 name="budget"
                 selected={query.budget}
-                hint="Uses the first street price on the card."
-                options={BUDGETS.map((band) => ({ value: band.id, label: band.label }))}
+                hint={t("catalog.priceHint")}
+                options={BUDGETS.map((band) => ({ value: band.id, label: phrase(band.label) }))}
               />
               <CheckList
-                legend="Brand"
+                legend={t("catalog.brand")}
                 name="brand"
                 selected={query.brand}
                 options={brands.map((brand) => ({ value: brand, label: brand }))}
               />
               <fieldset>
-                <legend className="text-sm font-semibold text-[#192a3d]">Availability</legend>
+                <legend className="text-sm font-semibold text-[#192a3d]">{t("catalog.availability")}</legend>
                 <label className="mt-2 flex items-start gap-2 text-sm text-[#3A4F66]">
                   <input
                     type="checkbox"
@@ -170,16 +190,16 @@ export function CatalogBrowser({
                     className="mt-0.5 size-4 accent-[#2872fa]"
                   />
                   <span>
-                    Listed as available
+                    {t("catalog.available")}
                     <span className="mt-1 block text-xs leading-relaxed">
-                      Only where the source said in stock or gave a ship window. “Not stated” stays out.
+                      {t("catalog.availableHint")}
                     </span>
                   </span>
                 </label>
               </fieldset>
               <div className="flex flex-wrap gap-2">
                 <Button type="submit" className="h-10 px-4">
-                  Apply filters
+                  {t("catalog.applyFilters")}
                 </Button>
                 <Button
                   type="button"
@@ -188,7 +208,7 @@ export function CatalogBrowser({
                   nativeButton={false}
                   render={<Link href="/gaming-pcs" />}
                 >
-                  Clear
+                  {t("catalog.clear")}
                 </Button>
               </div>
             </div>
@@ -196,8 +216,9 @@ export function CatalogBrowser({
 
           <div>
             <p className="text-sm text-[#3A4F66]" aria-live="polite">
-              {products.length} of {PRODUCTS.length} systems
-              {query.sort === "recommended" ? ". Recommended follows the catalog sequence." : "."}
+              {query.sort === "recommended"
+                ? t("catalog.countRecommended", { shown: products.length, total: PRODUCTS.length })
+                : t("catalog.count", { shown: products.length, total: PRODUCTS.length })}
             </p>
             {chips.length > 0 ? (
               <ul className="mt-3 flex flex-wrap gap-2">
@@ -207,8 +228,8 @@ export function CatalogBrowser({
                       href={chip.href}
                       className="inline-flex items-center rounded-full border border-[#d5dee6] bg-white px-3 py-1 text-xs text-[#192a3d] hover:border-[#2872fa]"
                     >
-                      {chip.label}
-                      <span className="sr-only">, remove filter</span>
+                      {chipText(chip.label)}
+                      <span className="sr-only">{t("catalog.remove")}</span>
                       <span aria-hidden="true" className="ml-2">
                         ×
                       </span>
@@ -220,16 +241,16 @@ export function CatalogBrowser({
 
             {products.length === 0 ? (
               <div className="mt-6 rounded-lg border border-dashed border-[#d5dee6] bg-white px-6 py-12 text-center">
-                <h2 className="text-lg font-semibold text-[#192a3d]">No systems match these filters</h2>
+                <h2 className="text-lg font-semibold text-[#192a3d]">{t("catalog.emptyTitle")}</h2>
                 <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#3A4F66]">
-                  The catalog has {PRODUCTS.length} desktops. Clear a filter or search a GPU name such as 5080.
+                  {t("catalog.emptyBody", { count: PRODUCTS.length })}
                 </p>
                 <Button
                   className="mt-5 h-10 px-4"
                   nativeButton={false}
                   render={<Link href="/gaming-pcs" />}
                 >
-                  Clear filters
+                  {t("catalog.clearFilters")}
                 </Button>
               </div>
             ) : (

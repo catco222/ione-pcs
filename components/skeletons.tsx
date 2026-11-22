@@ -1,7 +1,12 @@
+"use client";
+
+import { useI18n } from "@/components/language-provider";
+
 export function CatalogSkeleton() {
+  const { t } = useI18n();
   return (
     <div aria-busy="true" aria-live="polite" className="mt-6">
-      <p className="text-sm text-[#3A4F66]">Loading the catalog…</p>
+      <p className="text-sm text-[#3A4F66]">{t("loading.catalog")}</p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {Array.from({ length: 6 }, (_, index) => (
           <div
@@ -23,9 +28,10 @@ export function CatalogSkeleton() {
 }
 
 export function ProductSkeleton() {
+  const { t } = useI18n();
   return (
     <div aria-busy="true" aria-live="polite" className="mx-auto w-full max-w-[1290px] px-4 py-8 sm:px-6">
-      <p className="text-sm text-[#3A4F66]">Loading this system…</p>
+      <p className="text-sm text-[#3A4F66]">{t("loading.product")}</p>
       <div className="mt-4 grid animate-pulse gap-8 lg:grid-cols-2">
         <div className="aspect-[4/3] rounded-lg bg-[#e1e8ed]" />
         <div className="space-y-4">
@@ -44,9 +50,10 @@ export function ProductSkeleton() {
 }
 
 export function CompareSkeleton() {
+  const { t } = useI18n();
   return (
     <div aria-busy="true" aria-live="polite">
-      <p className="text-sm text-[#3A4F66]">Loading the comparison…</p>
+      <p className="text-sm text-[#3A4F66]">{t("compare.loading")}</p>
       <div className="mt-4 grid animate-pulse gap-4 sm:grid-cols-3">
         {Array.from({ length: 3 }, (_, index) => (
           <div key={index} className="h-64 rounded-lg bg-[#e1e8ed]" />

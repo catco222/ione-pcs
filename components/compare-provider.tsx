@@ -3,6 +3,7 @@
 import { createContext, useContext, useMemo, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useI18n } from "@/components/language-provider";
 import { getProduct } from "@/lib/catalog";
 import { Button } from "@/components/ui/button";
 
@@ -115,6 +116,7 @@ export function CompareProvider({ children }: { children: React.ReactNode }) {
     [ready, slugs],
   );
 
+  const { t } = useI18n();
   const showBar = ready && slugs.length > 0 && pathname !== "/compare";
 
   return (
@@ -125,17 +127,17 @@ export function CompareProvider({ children }: { children: React.ReactNode }) {
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[#d5dee6] bg-white">
           <div className="mx-auto flex w-full max-w-[1290px] flex-wrap items-center gap-3 px-4 py-3 sm:px-6">
             <p className="text-sm font-medium text-[#192a3d]">
-              {slugs.length} of {COMPARE_LIMIT} selected
+              {t("compare.barCount", { count: slugs.length, limit: COMPARE_LIMIT })}
             </p>
             <p className="text-sm text-[#3A4F66]">
-              {value.full ? "Remove one to add another." : "Add up to three systems."}
+              {value.full ? t("compare.barFull") : t("compare.barRoom")}
             </p>
             <div className="ml-auto flex gap-2">
               <Button variant="outline" className="h-10 bg-white" onClick={() => value.clear()}>
-                Clear
+                {t("compare.clear")}
               </Button>
               <Button className="h-10 px-4" nativeButton={false} render={<Link href="/compare" />}>
-                Compare
+                {t("nav.compare")}
               </Button>
             </div>
           </div>

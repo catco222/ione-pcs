@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { CompareToggle } from "@/components/compare-toggle";
+import { useI18n } from "@/components/language-provider";
 import { PriceBlock } from "@/components/price-block";
 import { ProductPhoto } from "@/components/product-photo";
 import { gpuLine, resolutionOf, type Product } from "@/lib/catalog";
 
 export function ProductCard({ product }: { product: Product }) {
+  const { t, phrase } = useI18n();
   const href = `/gaming-pcs/${product.slug}`;
 
   return (
@@ -22,20 +26,22 @@ export function ProductCard({ product }: { product: Product }) {
               {product.model}
             </Link>
           </h2>
-          <p className="mt-1 text-xs text-[#3A4F66]">Shop guide: {resolutionOf(product)}</p>
+          <p className="mt-1 text-xs text-[#3A4F66]">
+            {t("card.shop", { value: resolutionOf(product) })}
+          </p>
         </div>
         <p className="text-base font-semibold text-[#192a3d]">{gpuLine(product)}</p>
         <dl className="space-y-1 text-sm text-[#3A4F66]">
           <div className="flex justify-between gap-4">
-            <dt>CPU</dt>
+            <dt>{t("card.cpu")}</dt>
             <dd className="text-right">{product.cpu}</dd>
           </div>
           <div className="flex justify-between gap-4">
-            <dt>RAM</dt>
+            <dt>{t("card.ram")}</dt>
             <dd className="text-right">{product.ram}</dd>
           </div>
           <div className="flex justify-between gap-4">
-            <dt>Storage</dt>
+            <dt>{t("card.storage")}</dt>
             <dd className="text-right">
               {product.storage}
               {product.extraStorage ? ` + ${product.extraStorage}` : ""}
@@ -43,7 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         </dl>
         <PriceBlock product={product} />
-        <p className="text-sm text-[#192a3d]">{product.availability.label}</p>
+        <p className="text-sm text-[#192a3d]">{phrase(product.availability.label)}</p>
         <div className="mt-auto border-t border-[#e1e8ed] pt-3">
           <CompareToggle slug={product.slug} />
         </div>

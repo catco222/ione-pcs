@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { CatalogBrowser } from "@/components/catalog-browser";
 import { Container } from "@/components/container";
+import { SystemCount, Tx } from "@/components/i18n-text";
 import { PageHeader } from "@/components/page-header";
 import { CatalogSkeleton } from "@/components/skeletons";
 import { PRODUCTS, RESOLUTIONS, resolutionOf } from "@/lib/catalog";
@@ -24,7 +25,9 @@ export default function GamingPcsPage(props: PageProps<"/gaming-pcs">) {
         lede="Prebuilt towers from public listings. Filter by GPU, processor, memory, storage, a resolution band, a tugrik budget, or brand. Prices are estimates, and several sources disagreed or were out of stock on the day they were read."
       />
       <Container className="py-8 sm:py-10">
-        <h2 className="text-sm font-semibold tracking-wide text-[#3A4F66] uppercase">Resolution band</h2>
+        <h2 className="text-sm font-semibold tracking-wide text-[#3A4F66] uppercase">
+          <Tx k="catalog.resolution" />
+        </h2>
         <div className="mt-3 grid gap-3 sm:grid-cols-3">
           {RESOLUTIONS.map((resolution) => {
             const count = PRODUCTS.filter((product) => resolutionOf(product) === resolution).length;
@@ -36,13 +39,15 @@ export default function GamingPcsPage(props: PageProps<"/gaming-pcs">) {
               >
                 <span className="block text-lg font-semibold text-[#192a3d]">{resolution}</span>
                 <span className="mt-1 block text-sm text-[#3A4F66]">
-                  {count} {count === 1 ? "system" : "systems"}
+                  <SystemCount count={count} />
                 </span>
               </Link>
             );
           })}
         </div>
-        <h2 className="mt-8 text-sm font-semibold tracking-wide text-[#3A4F66] uppercase">Brand</h2>
+        <h2 className="mt-8 text-sm font-semibold tracking-wide text-[#3A4F66] uppercase">
+          <Tx k="catalog.brand" />
+        </h2>
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {brands.map((brand) => (
             <Link

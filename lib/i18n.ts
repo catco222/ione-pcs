@@ -22,7 +22,7 @@ const en = {
   "lang.mn": "Mongolian",
   "hero.title": "Gaming desktops",
   "hero.lede":
-    "iOne offers the widest range for gamers, from the most powerful gaming PCs to budget-friendly ones.",
+    "We offer the widest range for gamers, from the most powerful gaming PCs to budget-friendly ones.",
   "hero.browse": "Browse gaming PCs",
   "hero.compare": "Compare",
   "home.gpu": "GPU",
@@ -201,7 +201,7 @@ const mn: Record<MessageKey, string> = {
   "lang.mn": "Монгол",
   "hero.title": "Gamer PCs",
   "hero.lede":
-    "iOne тоглоомчдод хамгийн өргөн сонголтыг санал болгодог. Хамгийн хүчирхэг компьютерийг манайхаас аваарай.",
+    "Бид тоглоомчдод хамгийн өргөн сонголтыг санал болгодог. Хамгийн хүчирхэг компьютерийг манайхаас аваарай.",
   "hero.browse": "Gamer PC үзэх",
   "hero.compare": "Харьцуулах",
   "home.gpu": "GPU",

@@ -15,7 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/", key: "nav.gaming" },
+  { href: "/", key: "nav.gamingHeader" },
   { href: "/services", key: "nav.services" },
   { href: "/about", key: "nav.about" },
 ] as const;

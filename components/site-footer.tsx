@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { useI18n } from "@/components/language-provider";
-import { Wordmark } from "@/components/wordmark";
 import { company } from "@/lib/company";
 
 const LINKS = [
@@ -21,8 +20,7 @@ export function SiteFooter() {
     <footer className="mt-auto bg-[#111827] text-[#d5dee6]">
       <Container className="grid gap-8 py-10 sm:grid-cols-2">
         <div>
-          <Wordmark />
-          <p className="mt-3 text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed">
             {phrase(company.addressLines[0])}
             <br />
             {phrase(company.addressLines[1])}

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
 import { useI18n } from "@/components/language-provider";
-import { Wordmark } from "@/components/wordmark";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -54,9 +53,6 @@ export function SiteHeader() {
         {t("nav.skip")}
       </a>
       <div className="mx-auto flex h-16 w-full max-w-[1290px] items-center gap-4 px-4 sm:gap-6 sm:px-6">
-        <Link href="/" className="shrink-0 text-white" aria-label={t("nav.home")}>
-          <Wordmark />
-        </Link>
         <nav className="hidden items-center gap-6 lg:flex" aria-label={t("nav.primary")}>
           {NAV.map((item) => (
             <Link

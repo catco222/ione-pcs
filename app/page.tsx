@@ -63,8 +63,7 @@ export default function HomePage() {
       </section>
 
       <Container className="py-12 sm:py-16">
-        <h2 className="text-2xl font-semibold text-[#192a3d]">Start with a tier, a budget, or a brand</h2>
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-3">
           <article className="rounded-lg border border-[#d5dee6] bg-white p-5">
             <h3 className="font-semibold text-[#192a3d]">GPU</h3>
             <ul className="mt-3 space-y-2">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ImageIcon } from "lucide-react";
 import { useI18n } from "@/components/language-provider";
 import type { Product } from "@/lib/catalog";
 
@@ -14,16 +15,14 @@ export function ProductPhoto({
   showCredit?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
-  const { t, phrase } = useI18n();
+  const { phrase } = useI18n();
   const missing = !product.image || failed;
 
   return (
     <div>
-      <div className="flex aspect-[4/3] items-center justify-center bg-[#f2f5f7]">
+      <div className="flex aspect-[4/3] items-center justify-center bg-[#e7edf1]">
         {missing ? (
-          <p className="px-6 text-center text-sm text-[#3A4F66]">
-            {t("photo.missing")}
-          </p>
+          <ImageIcon className="size-8 text-[#8aa0b3]" strokeWidth={1.5} aria-hidden="true" />
         ) : (
           // Manufacturer CDNs are loaded by the browser. Next's optimizer would have to fetch them server-side.
           // eslint-disable-next-line @next/next/no-img-element

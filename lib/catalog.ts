@@ -790,7 +790,7 @@ const CATALOG: Product[] = [
   },
 ];
 
-export const PRODUCTS: Product[] = CATALOG.filter((product) => product.image !== null);
+export const PRODUCTS: Product[] = CATALOG;
 
 const ORDER = new Map(PRODUCTS.map((product, index) => [product.slug, index]));
 
